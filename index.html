@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Mutiullahi Uthman — Fullstack Engineer & Designer</title>
+    <title>Mutiullahi Uthman — Fullstack Software Engineer</title>
     <meta name="title" content="Mutiullahi Uthman - Portfolio website" />
     <meta name="description" content="Mutiullahi Uthman Portfolio website" />
 
@@ -353,11 +353,12 @@
 
       /* ─── Hero ──────────────────────────────────────────────────── */
       #hero {
-        min-height: 100vh;
-        padding-top: var(--nav-h);
+        min-height: 92vh;
+        /* ✅ FIXED: flush to navbar, content vertically centred naturally */
+        padding-top: calc(var(--nav-h) + 2rem);
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
         padding-bottom: 4rem;
         padding-left: clamp(1.5rem, 5vw, 4rem);
         padding-right: clamp(1.5rem, 5vw, 4rem);
@@ -367,12 +368,13 @@
       .hero-meta {
         display: flex;
         align-items: center;
-        gap: 1.2rem;
-        margin-bottom: 2rem;
+        gap: 1rem;
+        margin-bottom: 1.8rem;
         font-size: 0.78rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--ink-dim);
+        flex-wrap: wrap;
       }
 
       .hero-meta .dot {
@@ -389,7 +391,7 @@
 
       .hero-headline {
         font-family: var(--font-display);
-        font-size: clamp(3.2rem, 9vw, 9rem);
+        font-size: clamp(2.6rem, 10vw, 9rem);
         font-weight: 700;
         line-height: 0.95;
         letter-spacing: -0.02em;
@@ -752,10 +754,234 @@
       .btn-outline i { font-size: 0.7rem; transition: transform 0.2s; }
       .btn-outline:hover i { transform: translateX(3px); }
 
-      @media (max-width: 640px) {
-        .projects-grid { grid-template-columns: 1fr; }
-        .project-card:first-child { grid-column: auto; }
+      /* ─── About / Story Section ────────────────────────────────── */
+      #about {
+        padding: clamp(5rem, 12vw, 9rem) clamp(1.5rem, 5vw, 4rem);
+        background: var(--cream);
+        overflow: hidden;
+        position: relative;
       }
+      #about::before {
+        content: '✦';
+        position: absolute;
+        right: -0.1em; top: -0.15em;
+        font-size: clamp(14rem, 22vw, 22rem);
+        color: rgba(17,17,17,0.04);
+        pointer-events: none;
+        line-height: 1;
+      }
+      .about-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(3rem, 6vw, 6rem);
+        align-items: start;
+      }
+      .about-story {}
+      .about-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-family: 'Syne', sans-serif;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        margin-bottom: 1.4rem;
+      }
+      .about-eyebrow::before {
+        content: '';
+        display: inline-block;
+        width: 36px;
+        height: 1.5px;
+        background: var(--accent);
+      }
+      .about-headline {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(2.4rem, 5vw, 4.2rem);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+        margin-bottom: 1.8rem;
+      }
+      .about-headline em {
+        font-style: italic;
+        color: var(--ink-dim);
+        font-weight: 400;
+      }
+      .about-body p {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(0.9rem, 1.4vw, 1.02rem);
+        line-height: 1.78;
+        color: var(--ink-dim);
+        margin-bottom: 1.1rem;
+      }
+      .about-body p strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .about-body p.highlight {
+        border-left: 2px solid var(--accent);
+        padding-left: 1.2rem;
+        color: var(--ink);
+        font-style: italic;
+      }
+
+      /* ── Leisure / life grid ── */
+      .about-life {}
+      .life-label {
+        font-family: 'Syne', sans-serif;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .life-label::before {
+        content: '';
+        display: inline-block;
+        width: 36px;
+        height: 1.5px;
+        background: var(--accent);
+      }
+      .life-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 10px;
+      }
+      .life-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+        cursor: pointer;
+        background: var(--ink);
+      }
+      .life-card:nth-child(1) { grid-column: 1 / -1; aspect-ratio: 16/7; }
+      .life-card:nth-child(2) { aspect-ratio: 4/5; }
+      .life-card:nth-child(3) { aspect-ratio: 4/5; }
+      .life-card:nth-child(4) { aspect-ratio: 4/3; }
+      .life-card:nth-child(5) { aspect-ratio: 4/3; }
+
+      .life-card img,
+      .life-card video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    filter 0.5s ease;
+        filter: saturate(0.85) brightness(0.92);
+      }
+      .life-card:hover img,
+      .life-card:hover video {
+        transform: scale(1.06);
+        filter: saturate(1.1) brightness(1);
+      }
+      .life-card-label {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        padding: 1.4rem 1rem 0.8rem;
+        background: linear-gradient(to top, rgba(17,17,17,0.75) 0%, transparent 100%);
+        font-family: 'Syne', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.85);
+        transform: translateY(4px);
+        opacity: 0;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+      }
+      .life-card:hover .life-card-label {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── video play icon ── */
+      .life-card-play {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(0.85);
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.18);
+        border: 1.5px solid rgba(255,255,255,0.4);
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+      .life-card-play svg { width: 16px; height: 16px; fill: #fff; margin-left: 2px; }
+      .life-card:hover .life-card-play { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+      /* ── lightbox ── */
+      #life-lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 8888;
+        background: rgba(17,17,17,0.95);
+        align-items: center;
+        justify-content: center;
+        animation: lbFadeIn 0.3s ease;
+      }
+      #life-lightbox.open { display: flex; }
+      @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+      #life-lightbox img,
+      #life-lightbox video {
+        max-width: min(92vw, 1000px);
+        max-height: 88vh;
+        border-radius: 6px;
+        object-fit: contain;
+        animation: lbSlideUp 0.35s cubic-bezier(0.16,1,0.3,1);
+      }
+      @keyframes lbSlideUp {
+        from { opacity: 0; transform: translateY(30px) scale(0.96); }
+        to   { opacity: 1; transform: translateY(0)  scale(1); }
+      }
+      #lb-close {
+        position: fixed;
+        top: 1.2rem; right: 1.5rem;
+        font-size: 2rem;
+        color: rgba(255,255,255,0.6);
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.2s;
+        background: none; border: none;
+        font-family: sans-serif;
+      }
+      #lb-close:hover { color: #fff; }
+      #lb-caption {
+        position: fixed;
+        bottom: 1.5rem; left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Syne', sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.45);
+      }
+
+      /* ── scroll-reveal for about ── */
+      .reveal-about {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1);
+      }
+      .reveal-about.visible { opacity: 1; transform: translateY(0); }
+      .reveal-about:nth-child(2) { transition-delay: 0.15s; }
 
       /* ─── Newsletter / Contact CTA Section ─────────────────────── */
       #connect {
@@ -992,11 +1218,6 @@
       .newsletter-success.show { display: flex; }
       .newsletter-success i { font-size: 1rem; }
 
-      @media (max-width: 768px) {
-        .connect-inner { grid-template-columns: 1fr; }
-        #connect::after { display: none; }
-      }
-
       /* ─── Footer ────────────────────────────────────────────────── */
       footer {
         border-top: 1px solid var(--border);
@@ -1125,13 +1346,132 @@
       }
       .mobile-menu ul a:hover { color: var(--ink-dim); }
 
-      /* ─── Responsive ────────────────────────────────────────────── */
+      /* ══════════════════════════════════════════════════════════
+         RESPONSIVE — Mobile-first, tested at 320px → 1440px
+      ══════════════════════════════════════════════════════════ */
+
+      /* ── 768px: tablet / large phone landscape ── */
       @media (max-width: 768px) {
-        .nav-links { display: none; }
-        .hamburger { display: flex; }
-        .hero-headline { font-size: clamp(2.8rem, 14vw, 5rem); }
+        /* Nav */
+        .nav-links  { display: none; }
+        .hamburger  { display: flex; }
+
+        /* Hero */
+        #hero {
+          min-height: auto;
+          padding-top: calc(var(--nav-h) + 1.5rem);
+          padding-bottom: 3rem;
+          justify-content: flex-start;
+        }
+        .hero-meta  { gap: 0.8rem; font-size: 0.72rem; flex-wrap: wrap; }
+        .hero-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.5rem;
+          margin-top: 2rem;
+        }
+        .hero-desc  { max-width: 100%; font-size: 0.9rem; }
+        .hero-cta   { width: 100%; justify-content: center; }
+
+        /* Projects */
+        .section-header { flex-direction: column; gap: 0.4rem; }
+        .projects-grid  { grid-template-columns: 1fr; gap: 1px; }
+        .project-card:first-child { grid-column: auto; }
+        .project-card:first-child .project-img-wrap { aspect-ratio: 16/9; }
+        .project-info   { padding: 1.2rem 1.4rem 1.6rem; }
+        .project-name   { font-size: 1.35rem; }
+
+        /* About */
+        .about-grid     { grid-template-columns: 1fr; gap: 3rem; }
+
+        /* Connect */
+        .connect-inner  { grid-template-columns: 1fr; gap: 3rem; }
+        #connect::after { display: none; }
+        .connect-headline { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+        .connect-options  { flex-direction: column; }
+        .connect-option   { min-width: 0; }
+
+        /* Footer */
+        .footer-top     { flex-direction: column; gap: 2rem; }
         .footer-contact { align-items: flex-start; }
-        .footer-bottom { flex-direction: column; align-items: flex-start; }
+        .footer-bottom  { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+        .footer-cta-text { font-size: clamp(1.8rem, 8vw, 3rem); }
+
+        /* Profile modal — full-width on small screens */
+        .profile-modal  { left: 1rem; right: 1rem; width: auto; }
+      }
+
+      /* ── 640px: standard phone portrait ── */
+      @media (max-width: 640px) {
+        /* Hero */
+        .hero-meta { font-size: 0.68rem; }
+
+        /* Projects */
+        .tab-btn    { padding: 0.6rem 0.9rem; font-size: 0.72rem; }
+
+        /* About life grid → single column */
+        .life-grid  { grid-template-columns: 1fr; }
+        .life-card:nth-child(n) { grid-column: auto; aspect-ratio: 16/9; }
+        .life-card:nth-child(1) { aspect-ratio: 16/9; }
+
+        /* Connect */
+        .newsletter-row { flex-direction: column; border-radius: 4px; }
+        .newsletter-input { padding: 0.9rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .newsletter-btn   { width: 100%; justify-content: center; border-radius: 0 0 4px 4px; }
+
+        /* Footer */
+        .footer-social  { gap: 0.7rem; flex-wrap: wrap; }
+        .footer-bottom-links { gap: 1rem; flex-wrap: wrap; }
+      }
+
+      /* ── 480px: small phones (SE, Galaxy A) ── */
+      @media (max-width: 480px) {
+        :root { --nav-h: 60px; }
+
+        /* Navbar */
+        .navbar { padding: 0 1.2rem; }
+
+        /* Hero */
+        #hero {
+          padding-left: 1.2rem;
+          padding-right: 1.2rem;
+          padding-top: calc(var(--nav-h) + 1.2rem);
+        }
+        .hero-meta { gap: 0.6rem; }
+
+        /* Marquee — slow down a touch */
+        .marquee-track { animation-duration: 22s; }
+
+        /* Projects section */
+        #projects { padding: 3.5rem 1.2rem; }
+        .project-info   { padding: 1rem 1.2rem 1.5rem; }
+        .project-links  { gap: 0.8rem; }
+
+        /* About */
+        #about {
+          padding: 3.5rem 1.2rem;
+        }
+        .about-headline { font-size: clamp(2rem, 9vw, 3rem); }
+        .about-body p   { font-size: 0.88rem; }
+
+        /* Connect */
+        #connect { padding: 3.5rem 1.2rem; }
+        .connect-headline { font-size: clamp(2rem, 9vw, 3rem); }
+
+        /* Footer */
+        footer { padding: 3rem 1.2rem 2rem; }
+        .footer-copy { font-size: 0.7rem; }
+
+        /* Subject chips on contact */
+        .subject-chips  { gap: 0.4rem; }
+        .subject-chip   { font-size: 0.65rem; padding: 0.35rem 0.7rem; }
+      }
+
+      /* ── 380px: very small phones (Galaxy A12, Moto E) ── */
+      @media (max-width: 380px) {
+        .hero-cta { font-size: 0.75rem; padding: 0.85rem 1.4rem; }
+        .modal-skill-tag { font-size: 0.6rem; padding: 2px 6px; }
+        .connect-option { font-size: 0.7rem; padding: 0.7rem 0.8rem; }
       }
 
       /* ─── Page enter animation ──────────────────────────────────── */
@@ -1143,14 +1483,188 @@
       .hero-meta    { animation: fadeUp 0.7s ease both 0.2s; }
       .hero-headline{ animation: fadeUp 0.8s ease both 0.35s; }
       .hero-bottom  { animation: fadeUp 0.7s ease both 0.55s; }
+
+      /* ─── Intro Loader ──────────────────────────────────────────── */
+      body.js-loading { overflow: hidden; }
+
+      /* Two-panel curtain: top + bottom */
+      #page-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        pointer-events: all;
+      }
+
+      /* Each panel is half the screen height */
+      .loader-panel {
+        position: absolute;
+        left: 0; right: 0;
+        height: 50%;
+        background: var(--ink);
+        transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+      }
+      .loader-panel--top    { top: 0; transform: translateY(0); }
+      .loader-panel--bottom { bottom: 0; transform: translateY(0); }
+
+      /* Curtain splits apart on exit */
+      #page-loader.loader--exit .loader-panel--top    { transform: translateY(-100%); }
+      #page-loader.loader--exit .loader-panel--bottom { transform: translateY(100%); }
+
+      /* After exit animation remove from flow */
+      #page-loader.loader--done { display: none; }
+
+      /* Particles behind the text */
+      #particles-js {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+
+      /* Centred stage */
+      .loader-inner {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: clamp(2rem, 6vw, 5rem);
+        pointer-events: none;
+      }
+
+      /* Role label top-right */
+      .loader-role {
+        position: absolute;
+        top: clamp(1.5rem, 4vw, 3rem);
+        right: clamp(1.5rem, 4vw, 3rem);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--accent);
+        opacity: 0;
+        animation: ldrFade 0.5s ease both 0.4s;
+      }
+
+      /* Name lines — each clipped so they slide up into view */
+      .loader-name {
+        overflow: hidden;
+        margin-bottom: 0.2rem;
+      }
+
+      .loader-name-line {
+        display: block;
+        font-family: var(--font-display);
+        font-size: clamp(4rem, 14vw, 13rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 0.88;
+        color: var(--cream);
+        transform: translateY(110%);
+        opacity: 0;
+        transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.6s ease;
+      }
+
+      .loader-name-line.italic {
+        font-weight: 400;
+        font-style: italic;
+        color: rgba(242, 237, 228, 0.45);
+      }
+
+      .loader-name-line.visible {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* Bottom row: counter left, progress line right */
+      .loader-bottom {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 2.5rem;
+        opacity: 0;
+        animation: ldrFade 0.4s ease both 0.5s;
+      }
+
+      .loader-counter {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 700;
+        color: var(--cream);
+        letter-spacing: -0.02em;
+        line-height: 1;
+        min-width: 4ch;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Thin horizontal progress track */
+      .loader-line-track {
+        flex: 1;
+        height: 1px;
+        background: rgba(242, 237, 228, 0.12);
+        margin-left: clamp(1.5rem, 4vw, 3.5rem);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .loader-line-fill {
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 0%;
+        background: var(--accent);
+        transition: width 0.1s linear;
+      }
+
+      @keyframes ldrFade {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
     </style>
   </head>
 
   <body data-page="home">
 
+    <!-- ═══════════════════════════════════════════════════════════
+         INTRO LOADER — dark curtain splits open on load
+    ═══════════════════════════════════════════════════════════════ -->
+    <div id="page-loader" role="status" aria-label="Loading portfolio">
+
+      <!-- Two ink panels that split apart on exit -->
+      <div class="loader-panel loader-panel--top"></div>
+      <div class="loader-panel loader-panel--bottom"></div>
+
+      <!-- Particles live across both panels -->
+      <div id="particles-js"></div>
+
+      <!-- Content sits above all -->
+      <div class="loader-inner">
+
+        <span class="loader-role">Fullstack Software Engineer</span>
+
+        <div class="loader-name">
+          <span class="loader-name-line italic" id="ldr-first">Mutiullahi</span>
+        </div>
+        <div class="loader-name">
+          <span class="loader-name-line" id="ldr-last">Uthman.</span>
+        </div>
+
+        <div class="loader-bottom">
+          <span class="loader-counter" id="loader-counter">0</span>
+          <div class="loader-line-track">
+            <div class="loader-line-fill" id="loader-line-fill"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <!-- ── Mobile Menu ──────────────────────────────────────────── -->
     <div class="mobile-menu" id="mobileMenu">
       <ul>
+        <li><a href="#about" onclick="closeMobile()">about</a></li>
         <li><a href="projects.html" onclick="closeMobile()">projects</a></li>
         <li><a href="contact.html" onclick="closeMobile()">contact</a></li>
         <li><a href="https://dakultech.hashnode.dev/" target="_blank" rel="noopener noreferrer">blog</a></li>
@@ -1169,7 +1683,7 @@
         <p class="modal-name">Mutiullahi Uthman</p>
         <p class="modal-title">Fullstack Engineer &amp; Visual Designer</p>
         <p class="modal-location">
-          <i class="fas fa-location-dot"></i> Lagos, Nigeria
+          <i class="fas fa-globe"></i> Available Worldwide
         </p>
 
         <div class="modal-status">
@@ -1217,6 +1731,7 @@
       </button>
 
       <ul class="nav-links">
+        <li><a class="nav-link" href="#about">about</a></li>
         <li><a class="nav-link" href="projects.html">projects</a></li>
         <li><a class="nav-link" href="contact.html">contact</a></li>
         <li><a class="nav-link" href="https://dakultech.hashnode.dev/" target="_blank" rel="noopener noreferrer">blog</a></li>
@@ -1240,20 +1755,20 @@
         <span class="dot"></span>
         <span>Available for work</span>
         <span>·</span>
-        <span>Lagos, Nigeria</span>
+        <span>Available Worldwide</span>
       </div>
 
       <h1 class="hero-headline">
-        Building digital<br />
-        products, brands,<br />
-        <em>& experiences.</em>
+        I code it,<br />
+        design it,<br />
+        <em>& ship it right.</em>
       </h1>
 
       <div class="hero-bottom">
         <p class="hero-desc">
-          Fullstack Engineer with experience in web &amp; mobile app development,
-          backend engineering (Node.js, Golang &amp; PHP), SQL &amp; NoSQL databases,
-          cloud solutions, brand identity and product design.
+          Fullstack Engineer & Visual Designer — I handle the logic,
+          the look, and everything in between. Node.js · Golang · React ·
+          Cloud · Brand. One person, the full stack.
         </p>
         <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!" class="hero-cta" target="_blank" rel="noopener noreferrer" rel="noopener noreferrer">
           <i class="fab fa-whatsapp" style="font-size:1rem;"></i> Connect With Me
@@ -1303,6 +1818,108 @@
         </a>
       </div>
     </section>
+
+    <!-- ── About / Story ─────────────────────────────────────────── -->
+    <section id="about">
+      <div class="about-inner">
+        <div class="about-grid">
+
+          <!-- Left: story ------------------------------------------------>
+          <div class="about-story reveal-about">
+            <p class="about-eyebrow">The Human Behind the Code</p>
+            <h2 class="about-headline">Would you like to know<br><em>more about me?</em><br>Come with me →</h2>
+
+            <div class="about-body">
+              <p>
+                I hold a degree in <strong>Agricultural Economics and Extension</strong> from the prestigious
+                <strong>Ladoke Akintola University of Technology (LAUTECH)</strong>, graduating in 2016.
+                You might be wondering — how does an agricultural graduate end up in Software Engineering?
+              </p>
+              <p>
+                It happened as a challenge. After graduating, I ventured into <strong>cryptocurrency trading</strong>
+                and kept at it for years. Then, around 2020 — out of pandemic boredom and a genuine spark of ambition —
+                I wanted to launch my own crypto token. I'd already drafted the whitepaper and mapped everything out.
+              </p>
+              <p class="highlight">
+                The software agency I contacted quoted a price I simply couldn't afford. That one moment killed the idea —
+                and lit a fire in me that hasn't gone out since.
+              </p>
+              <p>
+                From that day I made myself a promise: I was going to <strong>learn to write code</strong>, build my own
+                projects, and use software engineering to solve real problems in the world.
+                And here I am today — living exactly that promise.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: life grid ------------------------------------------->
+          <div class="about-life reveal-about">
+            <p class="life-label">Life Outside the Screen</p>
+
+            <div class="life-grid">
+
+              <!-- Football -->
+              <div class="life-card" onclick="openLightbox('assets/football1.jpeg','image','Football ⚽')">
+                <img src="assets/football1.jpeg" alt="Football" loading="lazy">
+                <span class="life-card-label">Football ⚽</span>
+              </div>
+
+              <!-- Tech Fest 1 -->
+              <div class="life-card" onclick="openLightbox('assets/fest1.jpeg','image','Tech Fest 🎟️')">
+                <img src="assets/fest1.jpeg" alt="Tech Fest" loading="lazy">
+                <span class="life-card-label">Tech Fest 🎟️</span>
+              </div>
+
+              <!-- Tech Fest 2 -->
+              <div class="life-card" onclick="openLightbox('assets/fest2.jpeg','image','Tech Fest 🎟️')">
+                <img src="assets/fest2.jpeg" alt="Tech Fest" loading="lazy">
+                <span class="life-card-label">Tech Fest 🎟️</span>
+              </div>
+
+              <!-- Party photo -->
+              <div class="life-card" onclick="openLightbox('assets/party1.jpeg','image','Good Times 🎉')">
+                <img src="assets/party1.jpeg" alt="Party" loading="lazy">
+                <span class="life-card-label">Good Times 🎉</span>
+              </div>
+
+              <!-- Party video -->
+              <div class="life-card" onclick="openLightbox('assets/party2.mp4','video','Good Times 🎉')">
+                <video src="assets/party2.mp4" muted loop playsinline preload="metadata"></video>
+                <div class="life-card-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span class="life-card-label">Good Times 🎉</span>
+              </div>
+
+            </div>
+
+            <!-- Workspace video strip -->
+            <div style="margin-top:10px;">
+              <div class="life-card" style="aspect-ratio:16/7; border-radius:6px;"
+                   onclick="openLightbox('assets/work.mp4','video','In My Element 💻')">
+                <video src="assets/work.mp4" muted loop playsinline preload="metadata"
+                       style="width:100%;height:100%;object-fit:cover;display:block;
+                              filter:saturate(0.85) brightness(0.92);
+                              transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.5s ease;">
+                </video>
+                <div class="life-card-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span class="life-card-label">In My Element 💻</span>
+              </div>
+            </div>
+
+          </div><!-- /about-life -->
+        </div><!-- /about-grid -->
+      </div><!-- /about-inner -->
+    </section>
+
+    <!-- ── Lightbox ───────────────────────────────────────────────── -->
+    <div id="life-lightbox" role="dialog" aria-modal="true" onclick="closeLightbox(event)">
+      <button id="lb-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+      <div id="lb-content"></div>
+      <span id="lb-caption"></span>
+    </div>
 
     <!-- ── Connect / Newsletter ─────────────────────────────────── -->
     <section id="connect">
@@ -1437,5 +2054,57 @@
 
     <!-- Main script — projects, tabs, modal, newsletter -->
     <script src="js/script.js"></script>
+
+    <!-- Intro loader: particles library then app init -->
+    <script src="js/particles.min.js"></script>
+    <script src="js/app.js"></script>
+    <!-- ── About section JS ──────────────────────────────────────── -->
+    <script>
+      /* ── Lightbox ── */
+      function openLightbox(src, type, caption) {
+        const lb = document.getElementById('life-lightbox');
+        const ct = document.getElementById('lb-content');
+        const cp = document.getElementById('lb-caption');
+        ct.innerHTML = '';
+        if (type === 'image') {
+          const img = document.createElement('img');
+          img.src = src; img.alt = caption;
+          ct.appendChild(img);
+        } else {
+          const vid = document.createElement('video');
+          vid.src = src; vid.controls = true; vid.autoplay = true;
+          vid.style.cssText = 'max-width:min(92vw,1000px);max-height:88vh;border-radius:6px;';
+          ct.appendChild(vid);
+        }
+        cp.textContent = caption;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox(e) {
+        if (e && e.target !== document.getElementById('life-lightbox') &&
+            e.target !== document.getElementById('lb-close')) return;
+        const lb = document.getElementById('life-lightbox');
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        const vid = lb.querySelector('video');
+        if (vid) vid.pause();
+      }
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeLightbox({ target: document.getElementById('life-lightbox') });
+      });
+
+      /* ── Video cards: play on hover ── */
+      document.querySelectorAll('.life-card video').forEach(v => {
+        const card = v.closest('.life-card');
+        card.addEventListener('mouseenter', () => v.play().catch(() => {}));
+        card.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; });
+      });
+
+      /* ── Scroll reveal for about section ── */
+      const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }});
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal-about').forEach(el => revealObs.observe(el));
+    </script>
   </body>
 </html>

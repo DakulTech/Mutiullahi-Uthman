@@ -1,135 +1,114 @@
-/* -----------------------------------------------
-/* How to use? : Check the GitHub README
-/* ----------------------------------------------- */
+/**
+ * app.js — Mutiullahi Uthman Portfolio
+ * Loader: ink curtain + counter + name reveal, then curtain splits open.
+ */
 
-/* To load a config file (particles.json) you need to host this demo (MAMP/WAMP/local)... */
-/*
-particlesJS.load('particles-js', 'particles.json', function() {
-  console.log('particles.js loaded - callback');
-});
-*/
+(function () {
+  'use strict';
 
-/* Otherwise just put the config content (json): */
-
-
-
-particlesJS(
-    "particles-js",
-  
-    {
-      particles: {
-        number: {
-          value: 150,
-          density: {
-            enable: true,
-            value_area: 1000,
-          },
-        },
-        color: {
-          value: "#000000",
-        },
-        shape: {
-          type: "circle",
-          stroke: {
-            width: 0,
-            color: "#000000",
-          },
-          polygon: {
-            nb_sides: 5,
-          },
-          image: {
-            src: "img/github.svg",
-            width: 100,
-            height: 100,
-          },
-        },
-        opacity: {
-          value: 0.5,
-          random: false,
-          anim: {
-            enable: false,
-            speed: 1,
-            opacity_min: 0.1,
-            sync: false,
-          },
-        },
-        size: {
-          value: 5,
-          random: true,
-          anim: {
-            enable: false,
-            speed: 40,
-            size_min: 0.1,
-            sync: false,
-          },
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#000000",
-          opacity: 0.4,
-          width: 1,
-        },
-        move: {
-          enable: true,
-          speed: 6,
-          direction: "none",
-          random: false,
-          straight: false,
-          out_mode: "out",
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200,
-          },
-        },
+  var PARTICLES_CONFIG = {
+    particles: {
+      number: { value: 60, density: { enable: true, value_area: 1000 } },
+      color:  { value: '#C8B89A' },
+      shape:  { type: 'circle' },
+      opacity: {
+        value: 0.25, random: true,
+        anim: { enable: true, speed: 0.5, opacity_min: 0.05, sync: false }
       },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: {
-            enable: true,
-            mode: "repulse",
-          },
-          onclick: {
-            enable: true,
-            mode: "push",
-          },
-          resize: true,
-        },
-        modes: {
-          grab: {
-            distance: 400,
-            line_linked: {
-              opacity: 1,
-            },
-          },
-          bubble: {
-            distance: 400,
-            size: 40,
-            duration: 2,
-            opacity: 8,
-            speed: 3,
-          },
-          repulse: {
-            distance: 200,
-          },
-          push: {
-            particles_nb: 4,
-          },
-          remove: {
-            particles_nb: 2,
-          },
-        },
+      size: { value: 2, random: true, anim: { enable: false } },
+      line_linked: {
+        enable: true, distance: 130,
+        color: '#C8B89A', opacity: 0.1, width: 1
       },
-      retina_detect: true,
-      config_demo: {
-        hide_card: false,
-        background_color: "#4717F6",
-        background_image: "",
-        background_position: "50% 50%",
-        background_repeat: "no-repeat",
-        background_size: "cover",
+      move: {
+        enable: true, speed: 0.8,
+        direction: 'none', random: true,
+        straight: false, out_mode: 'out'
+      }
+    },
+    interactivity: {
+      detect_on: 'canvas',
+      events: {
+        onhover: { enable: true, mode: 'grab' },
+        onclick:  { enable: false },
+        resize:   true
       },
+      modes: {
+        grab: { distance: 160, line_linked: { opacity: 0.3 } }
+      }
+    },
+    retina_detect: true
+  };
+
+  function $(id) { return document.getElementById(id); }
+
+  function runCounter(duration, onTick, onDone) {
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased    = 1 - Math.pow(1 - progress, 3);
+      var val      = Math.floor(100 * eased);
+      onTick(val);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        onTick(100);
+        onDone && onDone();
+      }
     }
-  );
+    requestAnimationFrame(step);
+  }
+
+  var dismissed = false;
+
+  function dismissLoader() {
+    if (dismissed) return;
+    dismissed = true;
+    var loader = $('page-loader');
+    if (!loader) return;
+    loader.classList.add('loader--exit');
+    setTimeout(function () {
+      loader.classList.add('loader--done');
+      document.body.classList.remove('js-loading');
+    }, 950);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.body.classList.add('js-loading');
+
+    if ($('particles-js') && typeof particlesJS === 'function') {
+      particlesJS('particles-js', PARTICLES_CONFIG);
+    }
+
+    /* Staggered name line reveal */
+    setTimeout(function () {
+      var first = $('ldr-first');
+      var last  = $('ldr-last');
+      if (first) first.classList.add('visible');
+      setTimeout(function () {
+        if (last) last.classList.add('visible');
+      }, 240);
+    }, 200);
+
+    /* Counter + line fill */
+    var counterEl = $('loader-counter');
+    var fillEl    = $('loader-line-fill');
+    var startTime = Date.now();
+    var MIN_SHOW  = 2600;
+
+    runCounter(2200, function (val) {
+      if (counterEl) counterEl.textContent = val;
+      if (fillEl)    fillEl.style.width    = val + '%';
+    });
+
+    window.addEventListener('load', function () {
+      var elapsed   = Date.now() - startTime;
+      var remaining = Math.max(0, MIN_SHOW - elapsed);
+      setTimeout(dismissLoader, remaining);
+    });
+
+    setTimeout(dismissLoader, 5000);
+  });
+
+}());
