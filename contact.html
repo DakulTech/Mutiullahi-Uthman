@@ -1,107 +1,877 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Dakul Tech - Let's Connect" />
-    <meta name="author" content="Mutiullahi Uthman" />
-    <title>Dakul Tech - Contact</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Favicon -->
-    <link href="assets/favicon/favicon.ico" rel="icon" type="image/png" />
+    <title>Contact — Mutiullahi Uthman</title>
+    <meta name="title" content="Contact — Mutiullahi Uthman" />
+    <meta name="description" content="Get in touch with Mutiullahi Uthman — Fullstack Engineer & Designer based in Lagos, Nigeria." />
+    <meta name="author" content="Mutiullahi Uthman" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mutiullahi-uthman-portfolio.vercel.app/contact.html" />
+    <meta property="og:title" content="Contact — Mutiullahi Uthman" />
+    <meta property="og:description" content="Get in touch with Mutiullahi Uthman — Fullstack Engineer & Designer." />
+    <meta property="og:image" content="https://i.postimg.cc/WprQ4bQh/dakul-portfolio.png" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://x.com/Dakul_tech" />
+    <meta property="twitter:title" content="Contact — Mutiullahi Uthman" />
+    <meta property="twitter:description" content="Get in touch with Mutiullahi Uthman — Fullstack Engineer & Designer." />
+    <meta property="twitter:image" content="https://i.postimg.cc/WprQ4bQh/dakul-portfolio.png" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      /* ─── Reset & Base ─────────────────────────────────────────── */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --cream:        #F2EDE4;
+        --ink:          #111111;
+        --ink-dim:      #555550;
+        --accent:       #C8B89A;
+        --border:       #D8D2C8;
+        --white:        #FDFAF6;
+        --green:        #3EC97A;
+        --font-display: 'Cormorant Garamond', Georgia, serif;
+        --font-body:    'Syne', sans-serif;
+        --nav-h:        68px;
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: var(--font-body);
+        font-size: 15px;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      a { text-decoration: none; color: inherit; }
+      img { display: block; max-width: 100%; }
+
+      /* ─── Navbar ────────────────────────────────────────────────── */
+      .navbar {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 100;
+        height: var(--nav-h);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(1.5rem, 5vw, 4rem);
+        background: var(--cream);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-avatar-btn {
+        position: relative;
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--border);
+        overflow: visible;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        flex-shrink: 0;
+        transition: border-color 0.2s;
+      }
+      .nav-avatar-btn:hover { border-color: var(--ink); }
+      .nav-avatar-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+      .nav-avatar-btn img {
+        width: 100%; height: 100%;
+        border-radius: 50%; object-fit: cover; display: block;
+      }
+      .nav-avatar-btn::after {
+        content: '';
+        position: absolute; bottom: 1px; right: 1px;
+        width: 9px; height: 9px;
+        background: var(--green);
+        border: 2px solid var(--cream);
+        border-radius: 50%;
+      }
+
+      /* ─── Profile Modal ─────────────────────────────────────────── */
+      .profile-modal-backdrop {
+        position: fixed; inset: 0; z-index: 200;
+        background: transparent; display: none;
+      }
+      .profile-modal-backdrop.open { display: block; }
+
+      .profile-modal {
+        position: fixed;
+        top: calc(var(--nav-h) + 10px);
+        left: clamp(1rem, 5vw, 4rem);
+        z-index: 201; width: 300px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(17,17,17,0.14), 0 4px 16px rgba(17,17,17,0.08);
+        overflow: hidden;
+        transform: translateY(-10px) scale(0.97);
+        opacity: 0; pointer-events: none;
+        transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
+      }
+      .profile-modal.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+
+      .modal-cover {
+        height: 72px;
+        background: linear-gradient(135deg, #2a2a2a 0%, #4a4540 100%);
+        position: relative;
+      }
+      .modal-cover::after {
+        content: ''; position: absolute; inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='1' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.5;
+      }
+      .modal-avatar {
+        position: absolute; bottom: -22px; left: 20px;
+        width: 52px; height: 52px; border-radius: 50%;
+        border: 3px solid var(--white); object-fit: cover; background: var(--border);
+      }
+      .modal-body { padding: 30px 20px 20px; }
+      .modal-name { font-family: var(--font-body); font-size: 1rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 2px; }
+      .modal-title { font-size: 0.78rem; color: var(--ink-dim); line-height: 1.5; margin-bottom: 10px; }
+      .modal-location { display: flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; color: var(--ink-dim); margin-bottom: 14px; }
+      .modal-location i { font-size: 0.65rem; color: var(--accent); }
+      .modal-divider { height: 1px; background: var(--border); margin: 14px 0; }
+      .modal-status { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; color: var(--green); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 14px; }
+      .modal-status span.dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
+      @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+      .modal-skills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+      .modal-skill-tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-dim); background: var(--cream); border: 1px solid var(--border); padding: 3px 8px; border-radius: 20px; }
+      .modal-socials { display: flex; gap: 8px; align-items: center; }
+      .modal-social-link { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--ink-dim); font-size: 0.82rem; text-decoration: none; transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.18s; }
+      .modal-social-link:hover { transform: translateY(-2px); color: #fff; }
+      .modal-social-link.li:hover { background: #0A66C2; border-color: #0A66C2; }
+      .modal-social-link.gh:hover { background: #24292e; border-color: #24292e; }
+      .modal-social-link.tw:hover { background: #000; border-color: #000; }
+      .modal-social-link.fb:hover { background: #1877F2; border-color: #1877F2; }
+      .modal-cta { display: flex; align-items: center; justify-content: center; gap: 0.45rem; width: 100%; margin-top: 14px; padding: 0.6rem; background: var(--ink); color: var(--cream); font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; border-radius: 6px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+      .modal-cta:hover { background: #333; transform: translateY(-1px); }
+      .modal-cta i { font-size: 0.8rem; color: #25D366; }
+
+      /* ─── Nav Links ─────────────────────────────────────────────── */
+      .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+      .nav-links li { display: flex; align-items: center; }
+      .nav-links li:not(:first-child)::before { content: '/'; color: var(--accent); margin: 0 0.6rem; font-weight: 400; font-size: 0.9rem; }
+      .nav-link { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: lowercase; color: var(--ink-dim); transition: color 0.2s; }
+      .nav-link:hover { color: var(--ink); }
+      .nav-link.active { color: var(--ink); font-weight: 700; }
+      .nav-link.nav-cta { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--ink); color: var(--cream); padding: 0.45rem 1rem; border-radius: 2px; font-size: 0.78rem; letter-spacing: 0.06em; transition: background 0.2s, color 0.2s; }
+      .nav-link.nav-cta:hover { background: #333; }
+      .nav-link.nav-cta i { font-size: 0.7rem; }
+
+      .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+      .hamburger .bar { width: 22px; height: 2px; background: var(--ink); transition: all 0.3s; display: block; }
+
+      /* ─── Mobile Menu ───────────────────────────────────────────── */
+      .mobile-menu { position: fixed; inset: 0; background: var(--cream); z-index: 99; display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 8vw, 5rem); transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
+      .mobile-menu.open { transform: translateX(0); }
+      .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 2rem; }
+      .mobile-menu ul a { font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--ink); line-height: 1; transition: color 0.2s; }
+      .mobile-menu ul a:hover { color: var(--ink-dim); }
+
+      /* ─── Page Hero ─────────────────────────────────────────────── */
+      .page-hero {
+        padding-top: calc(var(--nav-h) + 4rem);
+        padding-bottom: 3rem;
+        padding-left: clamp(1.5rem, 5vw, 4rem);
+        padding-right: clamp(1.5rem, 5vw, 4rem);
+        border-bottom: 1px solid var(--border);
+      }
+      .page-hero-breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 1.4rem; }
+      .page-hero-breadcrumb a { color: var(--ink-dim); transition: color 0.2s; }
+      .page-hero-breadcrumb a:hover { color: var(--ink); }
+      .page-hero-breadcrumb span { color: var(--accent); }
+      .page-hero-title { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 700; line-height: 0.95; letter-spacing: -0.025em; }
+      .page-hero-title em { font-style: italic; font-weight: 400; color: var(--ink-dim); }
+
+      /* ─── Contact Layout ────────────────────────────────────────── */
+      .contact-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 0;
+        min-height: calc(100vh - var(--nav-h) - 280px);
+      }
+
+      /* ── Left: Info panel ── */
+      .contact-info {
+        padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      .contact-info-top {}
+
+      .contact-availability {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 1.8rem;
+      }
+      .contact-availability .dot {
+        width: 7px; height: 7px;
+        background: var(--green);
+        border-radius: 50%;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .contact-tagline {
+        font-family: var(--font-display);
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+      }
+      .contact-tagline em { font-style: italic; font-weight: 400; color: var(--ink-dim); }
+
+      .contact-bio {
+        font-size: 0.88rem;
+        color: var(--ink-dim);
+        line-height: 1.75;
+        max-width: 340px;
+      }
+
+      /* Direct contact items */
+      .contact-items {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .contact-item-icon {
+        width: 40px; height: 40px;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--ink-dim);
+        font-size: 0.85rem;
+        flex-shrink: 0;
+        transition: border-color 0.2s, color 0.2s, background 0.2s;
+      }
+
+      .contact-item:hover .contact-item-icon {
+        border-color: var(--ink);
+        color: var(--ink);
+        background: var(--white);
+      }
+
+      .contact-item-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 2px;
+      }
+
+      .contact-item-value {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--ink);
+        transition: color 0.2s;
+      }
+      .contact-item:hover .contact-item-value { color: var(--ink-dim); }
+
+      /* Social row */
+      .contact-socials {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+
+      .contact-social-link {
+        width: 36px; height: 36px;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--ink-dim);
+        font-size: 0.8rem;
+        transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.18s;
+      }
+      .contact-social-link:hover { transform: translateY(-2px); color: #fff; }
+      .contact-social-link.li:hover { background: #0A66C2; border-color: #0A66C2; }
+      .contact-social-link.gh:hover { background: #24292e; border-color: #24292e; }
+      .contact-social-link.tw:hover { background: #000; border-color: #000; }
+      .contact-social-link.fb:hover { background: #1877F2; border-color: #1877F2; }
+      .contact-social-link.hn:hover { background: #2962FF; border-color: #2962FF; }
+
+      /* ── Right: Form panel ── */
+      .contact-form-panel {
+        padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+        background: var(--white);
+      }
+
+      .form-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 0.6rem;
+      }
+
+      .form-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 2.5rem;
+        line-height: 1.1;
+      }
+
+      /* Form fields */
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+      }
+      .form-field.full { grid-column: 1 / -1; }
+
+      .form-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+      }
+
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        background: var(--cream);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        font-family: var(--font-body);
+        font-size: 0.88rem;
+        color: var(--ink);
+        outline: none;
+        transition: border-color 0.2s, background 0.2s;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+      .form-input::placeholder,
+      .form-textarea::placeholder { color: rgba(85, 85, 80, 0.4); }
+      .form-input:focus,
+      .form-textarea:focus {
+        border-color: var(--ink);
+        background: var(--white);
+      }
+      .form-input.error { border-color: #e05a5a; }
+
+      .form-textarea { resize: vertical; min-height: 140px; line-height: 1.6; }
+
+      /* Subject chips */
+      .subject-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .subject-chip {
+        padding: 0.4rem 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        cursor: pointer;
+        transition: border-color 0.2s, color 0.2s, background 0.2s;
+        background: transparent;
+        font-family: var(--font-body);
+      }
+      .subject-chip:hover,
+      .subject-chip.selected {
+        background: var(--ink);
+        color: var(--cream);
+        border-color: var(--ink);
+      }
+
+      /* Submit button */
+      .form-submit {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: var(--ink);
+        color: var(--cream);
+        padding: 0.9rem 2.2rem;
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+      }
+      .form-submit::before {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+      }
+      .form-submit:hover::before { transform: translateX(100%); }
+      .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(17,17,17,0.2); }
+      .form-submit:active { transform: translateY(0); }
+      .form-submit i { font-size: 0.75rem; transition: transform 0.2s; }
+      .form-submit:hover i { transform: translateX(4px); }
+      .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+
+      /* Success state */
+      .form-success {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 1rem;
+        padding: 3rem 2rem;
+        background: var(--cream);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+      }
+      .form-success.show { display: flex; }
+      .form-success-icon {
+        width: 56px; height: 56px;
+        background: rgba(62,201,122,0.1);
+        border: 1px solid rgba(62,201,122,0.3);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.4rem;
+        color: var(--green);
+      }
+      .form-success h4 {
+        font-family: var(--font-display);
+        font-size: 1.5rem; font-weight: 700;
+      }
+      .form-success p { font-size: 0.85rem; color: var(--ink-dim); }
+
+      /* Validation error msg */
+      .field-error {
+        font-size: 0.68rem;
+        color: #e05a5a;
+        letter-spacing: 0.04em;
+        margin-top: 2px;
+        display: none;
+      }
+      .field-error.show { display: block; }
+
+      /* ─── Footer ────────────────────────────────────────────────── */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 4rem clamp(1.5rem, 5vw, 4rem) 2.5rem;
+      }
+      .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; flex-wrap: wrap; margin-bottom: 4rem; }
+      .footer-cta-text { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; max-width: 520px; }
+      .footer-cta-text em { font-style: italic; font-weight: 400; color: var(--ink-dim); }
+      .footer-contact { display: flex; flex-direction: column; gap: 1.2rem; align-items: flex-end; }
+      .footer-email { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em; border-bottom: 1px solid var(--ink); padding-bottom: 2px; transition: color 0.2s; }
+      .footer-email:hover { color: var(--ink-dim); }
+      .footer-social { display: flex; gap: 1rem; align-items: center; }
+      .footer-social a { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink-dim); font-size: 0.8rem; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+      .footer-social a:hover { border-color: var(--ink); color: var(--ink); background: var(--white); }
+      .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+      .footer-copy { font-size: 0.75rem; color: var(--ink-dim); letter-spacing: 0.04em; }
+      .footer-bottom-links { display: flex; gap: 1.5rem; list-style: none; }
+      .footer-bottom-links a { font-size: 0.75rem; color: var(--ink-dim); transition: color 0.2s; }
+      .footer-bottom-links a:hover { color: var(--ink); }
+
+      /* ─── Responsive ────────────────────────────────────────────── */
+      @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .hamburger { display: flex; }
+        .contact-wrapper { grid-template-columns: 1fr; }
+        .contact-info { border-right: none; border-bottom: 1px solid var(--border); }
+        .footer-contact { align-items: flex-start; }
+        .footer-bottom { flex-direction: column; align-items: flex-start; }
+      }
+
+      @media (max-width: 480px) {
+        .form-row { grid-template-columns: 1fr; }
+      }
+
+      /* ─── Page enter animation ──────────────────────────────────── */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .page-hero-breadcrumb { animation: fadeUp 0.6s ease both 0.1s; }
+      .page-hero-title      { animation: fadeUp 0.7s ease both 0.25s; }
+      .contact-info         { animation: fadeUp 0.7s ease both 0.3s; }
+      .contact-form-panel   { animation: fadeUp 0.7s ease both 0.4s; }
+    </style>
   </head>
 
-  <body>
-    <div class="main-content position-relative min-vh-100 d-flex align-items-center justify-content-center">
-      <div id="particles-js" class="position-absolute w-100 h-100"></div>
+  <body data-page="contact">
 
-      <!-- Blobs Background -->
-      <img src="assets/blobs/blob-1.svg" class="blob blob-md position-absolute" alt="blob" style="top:10%;left:5%;" />
-      <img src="assets/blobs/blob-2.svg" class="blob blob-lg position-absolute" alt="blob" style="bottom:10%;right:5%;" />
-      <img src="assets/blobs/blob-3.svg" class="blob blob-xs position-absolute" alt="blob" style="top:50%;left:80%;" />
-      <img src="assets/blobs/blob-4.svg" class="blob blob-xs position-absolute" alt="blob" style="bottom:20%;left:20%;" />
-      <!-- End Blobs -->
+    <!-- ── Mobile Menu ──────────────────────────────────────────── -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="index.html" onclick="closeMobile()">home</a></li>
+        <li><a href="projects.html" onclick="closeMobile()">projects</a></li>
+        <li><a href="contact.html" onclick="closeMobile()">contact</a></li>
+        <li><a href="https://dakultech.hashnode.dev/" target="_blank" rel="noopener noreferrer">blog</a></li>
+        <li><a href="./assets/U__Mutiullahi_Resume.pdf" target="_blank" rel="noopener noreferrer">résumé</a></li>
+      </ul>
+    </div>
 
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-8 col-lg-6">
-            <!-- Logo as Home Link -->
-            <div class="mb-3 text-start logo-link">
-              <a href="index.html">
-                <img src="./assets/dakul.png" alt="Dakul Tech Logo" style="height:40px; width:auto;">
-              </a>
-            </div>
-            <!-- Contact Card -->
-            <div class="card card-profile shadow-lg">
-              <div class="card-profile-image text-center pt-4">
-                <img src="./assets/profile-image.png" class="rounded-circle" alt="Mutiullahi Uthman" width="120" />
-              </div>
-              <div class="card-body pt-5">
-                <div class="text-center">
-                  <h3>Mutiullahi Uthman</h3>
-                  <p class="text-muted">
-                    <i class="fas fa-map-marker-alt"></i> Ibadan, Nigeria <br />
-                    <i class="fas fa-phone"></i> +234 813 605 5016
-                  </p>
-                  <p>
-                    Frontend Developer | Software Engineer <br />
-                    Expert in crafting intuitive user interfaces with HTML, CSS, JavaScript, MERN stack and frameworks.
-                  </p>
-                  <hr class="my-4" />
-                </div>
-                <!-- Social Links -->
-                <div class="profile-card-social text-center pb-3">
-                  <a href="https://web.facebook.com/Dacooldalyricist" target="_blank"><i class="fab fa-facebook icon"></i></a>
-                  <a href="https://x.com/Dakul_tech" target="_blank"><i class="fa-brands fa-x-twitter icon"></i></a>
-                  <a href="https://www.linkedin.com/in/mutiullahi-adedokun-uthman-915224319/" target="_blank"><i class="fab fa-linkedin icon"></i></a>
-                  <a href="https://github.com/DakulTech" target="_blank"><i class="fab fa-github icon"></i></a>
-                  <a href="https://dakultech.hashnode.dev/" target="_blank"><i class="fa-brands fa-hashnode icon"></i></a>
-                </div>
-                <!-- Contact Form -->
-                <div class="contact-section mt-4">
-                  <h4 class="text-center">Contact</h4>
-                  <p class="text-center">Fill out the form and I'll respond as soon as possible.</p>
-                  <form>
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Name" />
-                    </div>
-                    <div class="form-group">
-                      <input type="email" class="form-control" placeholder="Email" />
-                    </div>
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Subject" />
-                    </div>
-                    <div class="form-group">
-                      <textarea class="form-control" rows="5" placeholder="Message"></textarea>
-                    </div>
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-info text-white px-4">Submit</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <!-- End Contact Card -->
-          </div>
+    <!-- ── Profile Modal ────────────────────────────────────────── -->
+    <div class="profile-modal-backdrop" id="profileBackdrop" onclick="closeProfileModal()"></div>
+
+    <div class="profile-modal" id="profileModal" role="dialog" aria-modal="true" aria-label="Profile card">
+      <div class="modal-cover">
+        <img class="modal-avatar" src="assets/profile-image.png" alt="Mutiullahi Uthman" />
+      </div>
+      <div class="modal-body">
+        <p class="modal-name">Mutiullahi Uthman</p>
+        <p class="modal-title">Fullstack Engineer &amp; Visual Designer</p>
+        <p class="modal-location"><i class="fas fa-location-dot"></i> Lagos, Nigeria</p>
+        <div class="modal-status"><span class="dot"></span> Available for work</div>
+        <div class="modal-skills">
+          <span class="modal-skill-tag">Node.js</span>
+          <span class="modal-skill-tag">Golang</span>
+          <span class="modal-skill-tag">PHP</span>
+          <span class="modal-skill-tag">React</span>
+          <span class="modal-skill-tag">SQL / NoSQL</span>
+          <span class="modal-skill-tag">Cloud</span>
+          <span class="modal-skill-tag">UI/UX</span>
         </div>
+        <div class="modal-divider"></div>
+        <div class="modal-socials">
+          <a href="https://www.linkedin.com/in/mutiullahi-adedokun-uthman-915224319/" target="_blank" rel="noopener noreferrer" class="modal-social-link li" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/DakulTech" target="_blank" rel="noopener noreferrer" class="modal-social-link gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://x.com/Dakul_tech" target="_blank" rel="noopener noreferrer" class="modal-social-link tw" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://web.facebook.com/Dacooldalyricist" target="_blank" rel="noopener noreferrer" class="modal-social-link fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!" target="_blank" rel="noopener noreferrer" class="modal-cta">
+          <i class="fab fa-whatsapp"></i> Connect on WhatsApp
+        </a>
       </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="./js/particle.min.js"></script>
-    <script src="./js/app.js"></script>
-    <script src="./js/script.js"></script>
+    <!-- ── Navbar ───────────────────────────────────────────────── -->
+    <nav class="navbar">
+      <button class="nav-avatar-btn" id="avatarBtn" onclick="toggleProfileModal()" aria-label="Open profile card" aria-expanded="false">
+        <img src="assets/profile-image.png" alt="Mutiullahi Uthman" />
+      </button>
+
+      <ul class="nav-links">
+        <li><a class="nav-link" href="index.html">home</a></li>
+        <li><a class="nav-link" href="projects.html">projects</a></li>
+        <li><a class="nav-link active" href="contact.html">contact</a></li>
+        <li><a class="nav-link" href="https://dakultech.hashnode.dev/" target="_blank" rel="noopener noreferrer">blog</a></li>
+        <li>
+          <a class="nav-link nav-cta" href="./assets/U__Mutiullahi_Resume.pdf" target="_blank" rel="noopener noreferrer">
+            résumé <i class="fas fa-arrow-right"></i>
+          </a>
+        </li>
+      </ul>
+
+      <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+
+    <!-- ── Page Hero ─────────────────────────────────────────────── -->
+    <div class="page-hero">
+      <p class="page-hero-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        Contact
+      </p>
+      <h1 class="page-hero-title">
+        Let's<br /><em>Connect.</em>
+      </h1>
+    </div>
+
+    <!-- ── Contact Section ───────────────────────────────────────── -->
+    <main>
+      <div class="contact-wrapper">
+
+        <!-- Left: Info -->
+        <aside class="contact-info">
+          <div class="contact-info-top">
+            <div class="contact-availability">
+              <span class="dot"></span>
+              Available for new work
+            </div>
+            <h2 class="contact-tagline">
+              Got something<br />
+              <em>worth building?</em>
+            </h2>
+            <p class="contact-bio">
+              Whether you have a product idea, need a reliable engineer for your team, 
+              or want to talk design — my inbox is open. I typically respond within 24 hours.
+            </p>
+          </div>
+
+          <!-- Direct contact -->
+          <div class="contact-items">
+            <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="contact-item">
+              <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <p class="contact-item-label">Email</p>
+                <p class="contact-item-value">uthmanmutiullahiadedokun@gmail.com</p>
+              </div>
+            </a>
+
+            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi!" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <p class="contact-item-label">WhatsApp</p>
+                <p class="contact-item-value">+234 813 605 5016</p>
+              </div>
+            </a>
+
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fas fa-location-dot"></i></div>
+              <div>
+                <p class="contact-item-label">Location</p>
+                <p class="contact-item-value">Lagos, Nigeria</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Socials -->
+          <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/mutiullahi-adedokun-uthman-915224319/" target="_blank" rel="noopener noreferrer" class="contact-social-link li" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/DakulTech" target="_blank" rel="noopener noreferrer" class="contact-social-link gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/Dakul_tech" target="_blank" rel="noopener noreferrer" class="contact-social-link tw" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://web.facebook.com/Dacooldalyricist" target="_blank" rel="noopener noreferrer" class="contact-social-link fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://dakultech.hashnode.dev/" target="_blank" rel="noopener noreferrer" class="contact-social-link hn" aria-label="Hashnode"><i class="fas fa-pen-nib"></i></a>
+          </div>
+        </aside>
+
+        <!-- Right: Form -->
+        <div class="contact-form-panel">
+          <p class="form-eyebrow">Send a message</p>
+          <h2 class="form-title">Fill out the form<br />and I'll get back to you.</h2>
+
+          <!-- What are you reaching out about? -->
+          <div class="subject-chips" id="subjectChips">
+            <button type="button" class="subject-chip selected" data-value="Project Inquiry">Project Inquiry</button>
+            <button type="button" class="subject-chip" data-value="Freelance Work">Freelance Work</button>
+            <button type="button" class="subject-chip" data-value="Full-time Role">Full-time Role</button>
+            <button type="button" class="subject-chip" data-value="Collaboration">Collaboration</button>
+            <button type="button" class="subject-chip" data-value="Just Saying Hi">Just Saying Hi 👋</button>
+          </div>
+
+          <!-- Success state -->
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon"><i class="fas fa-circle-check"></i></div>
+            <h4>Message sent!</h4>
+            <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
+          </div>
+
+          <!-- Form -->
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label" for="contact-name">Name *</label>
+                <input type="text" id="contact-name" class="form-input" placeholder="Your full name" autocomplete="name" required />
+                <span class="field-error" id="err-name">Please enter your name.</span>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="contact-email">Email *</label>
+                <input type="email" id="contact-email" class="form-input" placeholder="your@email.com" autocomplete="email" required />
+                <span class="field-error" id="err-email">Please enter a valid email.</span>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" class="form-input" placeholder="What's this about?" />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="contact-message">Message *</label>
+              <textarea id="contact-message" class="form-textarea" placeholder="Tell me about your project, timeline, budget — anything useful..." required></textarea>
+              <span class="field-error" id="err-message">Please write a message.</span>
+            </div>
+
+            <button type="submit" class="form-submit" id="submitBtn">
+              Send Message <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- ── Footer ───────────────────────────────────────────────── -->
+    <footer id="footer">
+      <div class="footer-top">
+        <p class="footer-cta-text">
+          Always searching for<br />
+          <em>new problems,</em><br />
+          great ideas &amp; fun teams.
+        </p>
+        <div class="footer-contact">
+          <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="footer-email">
+            uthmanmutiullahiadedokun@gmail.com
+          </a>
+          <div class="footer-social">
+            <a href="https://web.facebook.com/Dacooldalyricist" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/Dakul_tech" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/mutiullahi-adedokun-uthman-915224319/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/DakulTech" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://dakultech.hashnode.dev/" target="_blank" rel="noopener noreferrer" aria-label="Hashnode"><i class="fas fa-pen-nib"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; DakulTech <span id="datee"></span> — All rights reserved</p>
+        <ul class="footer-bottom-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="https://dakultech.hashnode.dev/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- ── Scripts ───────────────────────────────────────────────── -->
+    <script>
+      document.getElementById('datee').textContent = new Date().getFullYear();
+
+      // ── Mobile menu ──
+      function toggleMobile() { document.getElementById('mobileMenu')?.classList.toggle('open'); }
+      function closeMobile()  { document.getElementById('mobileMenu')?.classList.remove('open'); }
+
+      // ── Profile modal ──
+      function toggleProfileModal() {
+        const modal    = document.getElementById('profileModal');
+        const backdrop = document.getElementById('profileBackdrop');
+        const btn      = document.getElementById('avatarBtn');
+        const isOpen   = modal.classList.contains('open');
+        if (isOpen) { closeProfileModal(); }
+        else {
+          modal.classList.add('open');
+          backdrop.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+      function closeProfileModal() {
+        document.getElementById('profileModal')?.classList.remove('open');
+        document.getElementById('profileBackdrop')?.classList.remove('open');
+        document.getElementById('avatarBtn')?.setAttribute('aria-expanded', 'false');
+      }
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfileModal(); });
+
+      // ── Subject chips ──
+      let selectedSubject = 'Project Inquiry';
+      document.querySelectorAll('.subject-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.subject-chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          selectedSubject = chip.dataset.value;
+          // Mirror into subject field
+          const subjectField = document.getElementById('contact-subject');
+          if (subjectField) subjectField.value = selectedSubject;
+        });
+      });
+
+      // ── Contact form ──
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let valid = true;
+
+        const name    = document.getElementById('contact-name');
+        const email   = document.getElementById('contact-email');
+        const message = document.getElementById('contact-message');
+        const btn     = document.getElementById('submitBtn');
+
+        // Reset errors
+        ['err-name','err-email','err-message'].forEach(id => {
+          document.getElementById(id).classList.remove('show');
+        });
+        [name, email, message].forEach(f => f.classList.remove('error'));
+
+        // Validate
+        if (!name.value.trim()) {
+          document.getElementById('err-name').classList.add('show');
+          name.classList.add('error');
+          valid = false;
+        }
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+        if (!emailOk) {
+          document.getElementById('err-email').classList.add('show');
+          email.classList.add('error');
+          valid = false;
+        }
+        if (!message.value.trim()) {
+          document.getElementById('err-message').classList.add('show');
+          message.classList.add('error');
+          valid = false;
+        }
+
+        if (!valid) return;
+
+        // Simulate send
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+
+        setTimeout(() => {
+          this.style.display = 'none';
+          document.querySelector('.subject-chips').style.display = 'none';
+          document.querySelector('.form-eyebrow').style.display = 'none';
+          document.querySelector('.form-title').style.display = 'none';
+          document.getElementById('formSuccess').classList.add('show');
+          // 👉 Hook your form API here (EmailJS, Formspree, etc.)
+        }, 1400);
+      });
+    </script>
+
   </body>
 </html>
