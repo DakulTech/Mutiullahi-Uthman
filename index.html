@@ -10,10 +10,10 @@
     <meta name="description" content="Mutiullahi Uthman Portfolio website" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mutiullahi-uthman-portfolio.vercel.app/" />
+    <meta property="og:url" content="https://mutiullahi-uthman.vercel.app/" />
     <meta property="og:title" content="Mutiullahi Uthman - Portfolio website" />
     <meta property="og:description" content="Mutiullahi Uthman - Portfolio website" />
-        <meta property="og:image" content="https://mutiullahi-uthman-portfolio.vercel.app/assets/og-meta-image.jpg" />
+        <meta property="og:image" content="https://mutiullahi-uthman.vercel.app/assets/og-meta-image.jpg" />
     <meta property="og:image:width"  content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type"   content="image/jpeg" />
@@ -22,7 +22,7 @@
     <meta property="twitter:url" content="https://x.com/Dakul_tech" />
     <meta property="twitter:title" content="Mutiullahi Uthman Portfolio" />
     <meta property="twitter:description" content="Mutiullahi Uthman - Portfolio website" />
-    <meta property="twitter:image" content="https://mutiullahi-uthman-portfolio.vercel.app/assets/og-meta-image.jpg" />
+    <meta property="twitter:image" content="https://mutiullahi-uthman.vercel.app/assets/og-meta-image.jpg" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
@@ -1984,6 +1984,167 @@
         from { opacity: 0; }
         to   { opacity: 1; }
       }
+
+      /* ─── Rating Section ────────────────────────────────────────── */
+      #rating {
+        padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+        background: var(--white);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .rating-inner {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: clamp(3rem, 6vw, 6rem);
+        align-items: start;
+        max-width: 1100px;
+      }
+      .rating-eyebrow {
+        font-size: 0.68rem; font-weight: 700;
+        letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--accent); margin-bottom: 0.8rem;
+        display: flex; align-items: center; gap: 0.6rem;
+      }
+      .rating-eyebrow::before {
+        content: ''; display: block;
+        width: 28px; height: 1px; background: var(--accent);
+      }
+      .rating-headline {
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+        font-weight: 700; line-height: 1.0;
+        letter-spacing: -0.025em; color: var(--ink); margin-bottom: 1.4rem;
+      }
+      .rating-headline em { font-style: italic; font-weight: 400; color: var(--ink-dim); }
+      .rating-live-badge {
+        display: inline-flex; align-items: center; gap: 0.45rem;
+        border: 1px solid var(--border); border-radius: 100px;
+        padding: 0.3rem 0.8rem; background: var(--cream);
+        font-size: 0.7rem; font-weight: 600;
+        letter-spacing: 0.05em; color: var(--ink-dim);
+      }
+      .rating-dot {
+        width: 6px; height: 6px; border-radius: 50%;
+        background: #3EC97A; animation: pulse 2s ease-in-out infinite; flex-shrink: 0;
+      }
+      .rating-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
+      .reaction-buttons { display: flex; gap: 0.5rem; margin-bottom: 1.8rem; flex-wrap: wrap; }
+      .reaction-btn {
+        flex: 1; min-width: 72px; background: var(--cream);
+        border: 1px solid var(--border); border-radius: 10px;
+        padding: 1rem 0.5rem; cursor: pointer;
+        display: flex; flex-direction: column; align-items: center; gap: 0.45rem;
+        font-family: var(--font-body);
+        transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
+                    border-color 0.2s, background 0.2s, box-shadow 0.2s;
+        position: relative; overflow: hidden;
+      }
+      .reaction-btn:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 10px 28px rgba(17,17,17,0.1); }
+      .reaction-btn:active { transform: translateY(-1px); }
+      .reaction-btn:disabled { cursor: default; opacity: 0.6; }
+      .reaction-emoji {
+        font-size: 1.9rem; line-height: 1; display: block; position: relative;
+        transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); z-index: 1;
+      }
+      .reaction-btn:hover .reaction-emoji { transform: scale(1.25) rotate(-5deg); }
+      .reaction-label {
+        font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em;
+        text-transform: uppercase; color: var(--ink-dim); position: relative; z-index: 1;
+      }
+      .voted-confirm {
+        display: flex; align-items: center; gap: 0.8rem;
+        padding: 0.9rem 1.2rem; background: var(--cream);
+        border: 1px solid var(--border); border-radius: 8px;
+        margin-bottom: 1.8rem; animation: fadeUp 0.4s ease both;
+      }
+      .voted-emoji  { font-size: 1.8rem; }
+      .voted-title  { font-size: 0.8rem; font-weight: 700; color: var(--ink); margin-bottom: 1px; }
+      .voted-title span { color: var(--accent); }
+      .voted-sub    { font-size: 0.68rem; color: var(--ink-dim); letter-spacing: 0.04em; }
+      .rating-bars  { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.6rem; }
+      .rating-bar-row { display: flex; align-items: center; gap: 0.75rem; }
+      .bar-emoji { font-size: 1.1rem; width: 24px; text-align: center; flex-shrink: 0; }
+      .bar-wrap  { flex: 1; }
+      .bar-meta  { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.28rem; }
+      .bar-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-dim); }
+      .bar-pct   { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--ink-dim); letter-spacing: -0.02em; }
+      .bar-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+      .bar-fill  {
+        height: 100%; background: var(--ink); border-radius: 2px; width: 0%;
+        transition: width 0.9s cubic-bezier(0.16,1,0.3,1);
+        position: relative; overflow: hidden;
+      }
+      .bar-fill::after {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+        background-size: 200% 100%; animation: barShimmer 2s ease-in-out infinite;
+      }
+      .bar-fill.is-chosen { background: var(--accent); }
+      .bar-count { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; color: var(--ink-dim); width: 26px; text-align: right; flex-shrink: 0; }
+      .ai-verdict {
+        display: flex; align-items: flex-start; gap: 0.85rem;
+        padding: 1.3rem 1.5rem; background: var(--ink);
+        border-radius: 8px; margin-bottom: 1rem;
+        position: relative; overflow: hidden;
+      }
+      .ai-verdict::before {
+        content: ''; position: absolute; inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        opacity: 0.04; pointer-events: none;
+      }
+      .ai-verdict-icon {
+        width: 30px; height: 30px; border-radius: 50%;
+        background: rgba(200,184,154,0.12); border: 1px solid rgba(200,184,154,0.25);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--accent); flex-shrink: 0; margin-top: 2px; position: relative; z-index: 1;
+      }
+      .ai-verdict-body { position: relative; z-index: 1; flex: 1; }
+      .ai-verdict-eyebrow {
+        font-size: 0.6rem; font-weight: 700;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        color: rgba(200,184,154,0.6); margin-bottom: 0.4rem;
+      }
+      .ai-verdict-text {
+        font-family: var(--font-display);
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        font-style: italic; font-weight: 600;
+        color: rgba(242,237,228,0.88);
+        line-height: 1.35; letter-spacing: -0.01em;
+      }
+      .ai-verdict-text.loading {
+        color: rgba(242,237,228,0.3); font-style: italic;
+        font-size: 0.85rem; font-family: var(--font-body);
+      }
+      .rating-footnote {
+        font-size: 0.6rem; font-weight: 600;
+        letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--border); text-align: center;
+      }
+      .reveal-rating {
+        opacity: 0; transform: translateY(24px);
+        transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+      }
+      .reveal-rating.visible { opacity: 1; transform: none; }
+      .reveal-rating:nth-child(2) { transition-delay: 0.15s; }
+      @keyframes barShimmer {
+        0%   { background-position: -200% center; }
+        100% { background-position: 200% center; }
+      }
+      @keyframes popEmoji {
+        0%   { transform: scale(1); }
+        40%  { transform: scale(1.5) rotate(-8deg); }
+        70%  { transform: scale(0.9); }
+        100% { transform: scale(1); }
+      }
+      @media (max-width: 768px) {
+        .rating-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      }
+      @media (max-width: 480px) {
+        #rating { padding: 3.5rem 1.2rem; }
+        .reaction-btn { min-width: 56px; padding: 0.8rem 0.4rem; }
+        .reaction-emoji { font-size: 1.5rem; }
+        .reaction-label { font-size: 0.52rem; }
+      }
     </style>
   </head>
 
@@ -2079,7 +2240,7 @@
           </a>
         </div>
 
-        <a href="https://wa.me/=2348136055016?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!"
+        <a href="https://wa.me/2348136055016?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!"
            target="_blank" rel="noopener noreferrer" rel="noopener noreferrer" class="modal-cta">
           <i class="fab fa-whatsapp"></i> Connect on WhatsApp
         </a>
@@ -2098,7 +2259,7 @@
         <li><a class="nav-link" href="contact.html">contact</a></li>
         <li><a class="nav-link" href="https://dakultech.hashnode.dev/" target="_blank" rel="noopener noreferrer">blog</a></li>
         <li>
-          <a class="nav-link nav-cta" href="./assets/U__Mutiullahi_Resume.pdf" target="_blank" rel="noopener noreferrer">
+          <a class="nav-link nav-cta" href="./assets/Mutiullahi_Uthman_Resume.pdf" target="_blank" rel="noopener noreferrer">
             résumé <i class="fas fa-arrow-right"></i>
           </a>
         </li>
@@ -2148,21 +2309,20 @@
             the look, and everything in between. One person, the full stack.
           </p>
           <div class="hero-stack">
+            <span class="hero-stack-tag">HTML5</span>
+            <span class="hero-stack-tag">CSS3</span>
             <span class="hero-stack-tag">JavaScript</span>
             <span class="hero-stack-tag">Node.js</span>
-            <span class="hero-stack-tag">Golang</span>
-            <span class="hero-stack-tag">HTML5</span>
-            <span class="hero-stack-tag">React</span>
             <span class="hero-stack-tag">PHP</span>
+            <span class="hero-stack-tag">Golang</span>
+            <span class="hero-stack-tag">React</span>
             <span class="hero-stack-tag">Flutter</span>
             <span class="hero-stack-tag">Cloud</span>
             <span class="hero-stack-tag">UI/UX</span>
             <span class="hero-stack-tag">Brand</span>
           </div>
-
-
         </div>
-        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!" class="hero-cta" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/2348136055016?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!" class="hero-cta" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-whatsapp"></i> Connect With Me
         </a>
       </div>
@@ -2347,6 +2507,125 @@
       <span id="lb-caption"></span>
     </div>
 
+
+    <!-- ── Visitor Rating ─────────────────────────────────────────── -->
+    <section id="rating">
+      <div class="rating-inner">
+
+        <!-- Left: headline -->
+        <div class="rating-left reveal-rating">
+          <p class="rating-eyebrow">Live Visitor Verdict</p>
+          <h2 class="rating-headline">
+            What do you think<br />
+            <em>of this portfolio?</em>
+          </h2>
+          <div class="rating-live-badge" id="ratingBadge">
+            <span class="rating-dot"></span>
+            <span id="ratingTotal">0</span>&nbsp;votes cast
+            <span class="rating-sep"></span>
+            <span id="ratingTop"></span>
+          </div>
+        </div>
+
+        <!-- Right: reactions + bars + AI verdict -->
+        <div class="rating-right reveal-rating">
+
+          <!-- Reaction buttons (shown before voting) -->
+          <div class="reaction-buttons" id="reactionButtons">
+            <button class="reaction-btn" data-id="fire"    onclick="castVote('fire')">
+              <span class="reaction-emoji">&#x1F525;</span>
+              <span class="reaction-label">Impressive</span>
+            </button>
+            <button class="reaction-btn" data-id="sparkle" onclick="castVote('sparkle')">
+              <span class="reaction-emoji">&#x2728;</span>
+              <span class="reaction-label">Clean Design</span>
+            </button>
+            <button class="reaction-btn" data-id="rocket"  onclick="castVote('rocket')">
+              <span class="reaction-emoji">&#x1F680;</span>
+              <span class="reaction-label">Hire-worthy</span>
+            </button>
+            <button class="reaction-btn" data-id="bulb"    onclick="castVote('bulb')">
+              <span class="reaction-emoji">&#x1F4A1;</span>
+              <span class="reaction-label">Creative</span>
+            </button>
+            <button class="reaction-btn" data-id="clap"    onclick="castVote('clap')">
+              <span class="reaction-emoji">&#x1F44F;</span>
+              <span class="reaction-label">Inspiring</span>
+            </button>
+          </div>
+
+          <!-- Already-voted confirmation (hidden until voted) -->
+          <div class="voted-confirm" id="votedConfirm" style="display:none;">
+            <span class="voted-emoji" id="votedEmoji"></span>
+            <div>
+              <p class="voted-title">You voted: <span id="votedLabel"></span></p>
+              <p class="voted-sub">Thanks for the feedback!</p>
+            </div>
+          </div>
+
+          <!-- Results bars -->
+          <div class="rating-bars" id="ratingBars">
+            <div class="rating-bar-row" data-id="fire">
+              <span class="bar-emoji">&#x1F525;</span>
+              <div class="bar-wrap">
+                <div class="bar-meta"><span class="bar-label">Impressive</span><span class="bar-pct" id="pct-fire">0%</span></div>
+                <div class="bar-track"><div class="bar-fill" id="bar-fire"></div></div>
+              </div>
+              <span class="bar-count" id="count-fire">0</span>
+            </div>
+            <div class="rating-bar-row" data-id="sparkle">
+              <span class="bar-emoji">&#x2728;</span>
+              <div class="bar-wrap">
+                <div class="bar-meta"><span class="bar-label">Clean Design</span><span class="bar-pct" id="pct-sparkle">0%</span></div>
+                <div class="bar-track"><div class="bar-fill" id="bar-sparkle"></div></div>
+              </div>
+              <span class="bar-count" id="count-sparkle">0</span>
+            </div>
+            <div class="rating-bar-row" data-id="rocket">
+              <span class="bar-emoji">&#x1F680;</span>
+              <div class="bar-wrap">
+                <div class="bar-meta"><span class="bar-label">Hire-worthy</span><span class="bar-pct" id="pct-rocket">0%</span></div>
+                <div class="bar-track"><div class="bar-fill" id="bar-rocket"></div></div>
+              </div>
+              <span class="bar-count" id="count-rocket">0</span>
+            </div>
+            <div class="rating-bar-row" data-id="bulb">
+              <span class="bar-emoji">&#x1F4A1;</span>
+              <div class="bar-wrap">
+                <div class="bar-meta"><span class="bar-label">Creative</span><span class="bar-pct" id="pct-bulb">0%</span></div>
+                <div class="bar-track"><div class="bar-fill" id="bar-bulb"></div></div>
+              </div>
+              <span class="bar-count" id="count-bulb">0</span>
+            </div>
+            <div class="rating-bar-row" data-id="clap">
+              <span class="bar-emoji">&#x1F44F;</span>
+              <div class="bar-wrap">
+                <div class="bar-meta"><span class="bar-label">Inspiring</span><span class="bar-pct" id="pct-clap">0%</span></div>
+                <div class="bar-track"><div class="bar-fill" id="bar-clap"></div></div>
+              </div>
+              <span class="bar-count" id="count-clap">0</span>
+            </div>
+          </div>
+
+          <!-- AI verdict card -->
+          <div class="ai-verdict" id="aiVerdict">
+            <div class="ai-verdict-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="ai-verdict-body">
+              <p class="ai-verdict-eyebrow">AI Verdict &middot; <span id="aiTotal">0</span> votes</p>
+              <p class="ai-verdict-text" id="aiText">Be the first to vote &mdash; the verdict updates live.</p>
+            </div>
+          </div>
+
+          <p class="rating-footnote">Votes are anonymous &middot; results update in real time</p>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ── Connect / Newsletter ─────────────────────────────────── -->
     <section id="connect">
       <div class="connect-inner">
@@ -2397,11 +2676,11 @@
 
           <!-- Quick contact options -->
           <div class="connect-options">
-            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!"
+            <a href="https://wa.me/2348136055016?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!"
                target="_blank" rel="noopener noreferrer" rel="noopener" class="connect-option whatsapp">
               <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
-            <a href="/cdn-cgi/l/email-protection#d6a3a2bebbb7b8bba3a2bfa3babab7bebfb7b2b3b2b9bda3b896b1bbb7bfbaf8b5b9bb" class="connect-option gmail">
+            <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="connect-option gmail">
               <i class="fas fa-envelope"></i> Gmail
             </a>
             <a href="https://www.linkedin.com/in/mutiullahi-adedokun-uthman-915224319/"
@@ -2424,8 +2703,8 @@
         </p>
 
         <div class="footer-contact">
-          <a href="/cdn-cgi/l/email-protection#3742435f5a56595a42435e425b5b565f5e56535253585c425977505a565e5b1954585a" class="footer-email">
-            <span class="__cf_email__" data-cfemail="dca9a8b4b1bdb2b1a9a8b5a9b0b0bdb4b5bdb8b9b8b3b7a9b29cbbb1bdb5b0f2bfb3b1">[email&#160;protected]</span>
+          <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="footer-email">
+            uthmanmutiullahiadedokun@gmail.com
           </a>
 
           <div class="footer-social">
@@ -2450,7 +2729,7 @@
 
       <div class="footer-bottom">
         <p class="footer-copy">
-          &copy; DakulTech <span id="datee"></span> — All rights reserved. All wrongs reversed too.
+          &copy; DakulTech <span id="datee"></span> — All rights reserved. All wrongs reserved too.
         </p>
         <ul class="footer-bottom-links">
           <li><a href="projects.html">Projects</a></li>
@@ -2462,10 +2741,7 @@
 
 
     <!-- ── Scripts ───────────────────────────────────────────────── -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-      // Year
-      document.getElementById('datee').textContent = new Date().getFullYear();
-
+    <script>
       // Year
       document.getElementById('datee').textContent = new Date().getFullYear();
 
@@ -2584,16 +2860,15 @@
       (function() {
         const hero = document.getElementById('hero');
         const headline = hero && hero.querySelector('.hero-headline');
-        if (!headline || window.innerWidth < 768) return;
+        if (!headline) return;
         hero.addEventListener('mousemove', e => {
           const rect = hero.getBoundingClientRect();
-          const cx = (e.clientX - rect.left) / rect.width  - 0.5;
-          const cy = (e.clientY - rect.top)  / rect.height - 0.5;
-          headline.style.transform = `translate(${cx * 10}px, ${cy * 10}px)`;
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          headline.style.transform = `translate(${x * 0.02}px, ${y * 0.02}px)`;
         });
         hero.addEventListener('mouseleave', () => {
           headline.style.transform = `translate(0, 0)`;
         });
-
       })();
     </script>
