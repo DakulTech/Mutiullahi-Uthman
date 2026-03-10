@@ -2391,15 +2391,15 @@
             <!-- Mini stats -->
             <div class="about-stats">
               <div class="about-stat">
-                <div class="about-stat-num">50<sup>+</sup></div>
+                <div class="about-stat-num">11<sup>+</sup></div>
                 <div class="about-stat-label">Projects Built</div>
               </div>
               <div class="about-stat">
-                <div class="about-stat-num">6<sup>+</sup></div>
+                <div class="about-stat-num">4<sup>+</sup></div>
                 <div class="about-stat-label">Years Coding</div>
               </div>
               <div class="about-stat">
-                <div class="about-stat-num">10<sup>+</sup></div>
+                <div class="about-stat-num">5<sup>+</sup></div>
                 <div class="about-stat-label">Tech Stacks</div>
               </div>
             </div>
@@ -2703,9 +2703,7 @@
         </p>
 
         <div class="footer-contact">
-          <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="footer-email">
-            uthmanmutiullahiadedokun@gmail.com
-          </a>
+          <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="footer-email">uthmanmutiullahiadedokun@gmail.com</a>
 
           <div class="footer-social">
             <a href="https://web.facebook.com/Dacooldalyricist" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -2729,7 +2727,7 @@
 
       <div class="footer-bottom">
         <p class="footer-copy">
-          &copy; DakulTech <span id="datee"></span> — All rights reserved. All wrongs reserved too.
+          &copy; DakulTech <span id="datee"></span> — All rights reserved. All wrongs reversed too.
         </p>
         <ul class="footer-bottom-links">
           <li><a href="projects.html">Projects</a></li>
@@ -2760,16 +2758,15 @@
     <!-- Intro loader: particles library then app init -->
     <script src="js/particles.min.js"></script>
     <script src="js/app.js"></script>
+
     <!-- ── About + Hero animation JS ────────────────────────────── -->
     <script>
       /* ── Hero: trigger split-text after loader exits ── */
       (function() {
-        // Fire as soon as DOM is ready, with a small grace delay
         function triggerHero() {
           const hero = document.getElementById('hero');
           if (hero) hero.classList.add('hero--ready');
         }
-        // Wait for loader to finish (app.js fires 'loaderDone' event), fallback 3200ms
         window.addEventListener('loaderDone', triggerHero, { once: true });
         setTimeout(triggerHero, 3200);
       })();
@@ -2827,7 +2824,6 @@
           function step(ts) {
             if (!start) start = ts;
             const p = Math.min((ts - start) / duration, 1);
-            // Ease out cubic
             const ease = 1 - Math.pow(1 - p, 3);
             text.textContent = Math.round(ease * target);
             if (p < 1) requestAnimationFrame(step);
@@ -2837,38 +2833,194 @@
         });
       }
 
-      /* ── Master scroll-reveal IntersectionObserver ── */
+      /* ── Master scroll-reveal IntersectionObserver ─────────────────────────
+         Handles BOTH .reveal-about (About section) and .reveal-rating (Rating section)
+      ──────────────────────────────────────────────────────────────────────── */
       const revealObs = new IntersectionObserver((entries) => {
         entries.forEach(e => {
           if (!e.isIntersecting) return;
-
           const el = e.target;
           el.classList.add('visible');
-
-          // Trigger child animations for about-story
           if (el.classList.contains('about-story')) {
             animateCounters(el);
           }
-
           revealObs.unobserve(el);
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.08 });
 
-      document.querySelectorAll('.reveal-about').forEach(el => revealObs.observe(el));
+      document.querySelectorAll('.reveal-about, .reveal-rating').forEach(el => revealObs.observe(el));
 
       /* ── Hero: subtle mouse-parallax on headline ── */
       (function() {
-        const hero = document.getElementById('hero');
+        const hero     = document.getElementById('hero');
         const headline = hero && hero.querySelector('.hero-headline');
         if (!headline) return;
         hero.addEventListener('mousemove', e => {
-          const rect = hero.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          headline.style.transform = `translate(${x * 0.02}px, ${y * 0.02}px)`;
+          const { left, top, width, height } = hero.getBoundingClientRect();
+          const cx = (e.clientX - left) / width  - 0.5;
+          const cy = (e.clientY - top)  / height - 0.5;
+          headline.style.transform = `translate(${cx * 10}px, ${cy * 6}px)`;
         });
-        hero.addEventListener('mouseleave', () => {
-          headline.style.transform = `translate(0, 0)`;
-        });
+        hero.addEventListener('mouseleave', () => { headline.style.transform = ''; });
       })();
     </script>
+
+    <!-- ── Rating Section JS ─────────────────────────────────────── -->
+    <script>
+    (function() {
+      const REACTIONS = [
+        { id: 'fire',    emoji: '\uD83D\uDD25', label: 'Impressive'   },
+        { id: 'sparkle', emoji: '\u2728',       label: 'Clean Design' },
+        { id: 'rocket',  emoji: '\uD83D\uDE80', label: 'Hire-worthy'  },
+        { id: 'bulb',    emoji: '\uD83D\uDCA1', label: 'Creative'     },
+        { id: 'clap',    emoji: '\uD83D\uDC4F', label: 'Inspiring'    },
+      ];
+      let currentVotes = { fire:0, sparkle:0, rocket:0, bulb:0, clap:0 };
+      let hasVoted = false, chosenId = null;
+
+      /* ── check prior vote ── */
+      function checkVoted() {
+        try {
+          const s = localStorage.getItem('portfolio_voted_v2');
+          if (s) { const d = JSON.parse(s); if (d.voted) { hasVoted = true; chosenId = d.reactionId; } }
+        } catch(_) {}
+      }
+
+      /* ── animate number ── */
+      function animNum(el, target) {
+        const start = parseInt(el.textContent, 10) || 0;
+        if (start === target) return;
+        const dur = 700, t0 = performance.now();
+        (function step(now) {
+          const p = Math.min((now - t0) / dur, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(start + (target - start) * ease);
+          if (p < 1) requestAnimationFrame(step); else el.textContent = target;
+        })(t0);
+      }
+
+      /* ── render vote data ── */
+      function renderVotes(votes, chosen) {
+        const total = Object.values(votes).reduce((a,b) => a + b, 0);
+        const topR  = REACTIONS.reduce((a,b) => votes[b.id] > votes[a.id] ? b : a);
+        animNum(document.getElementById('ratingTotal'), total);
+        const topEl = document.getElementById('ratingTop');
+        if (topEl) topEl.textContent = total > 0 ? '\u00B7 Top: ' + topR.emoji + ' ' + topR.label : '';
+        REACTIONS.forEach(r => {
+          const p    = total === 0 ? 0 : Math.round((votes[r.id] / total) * 100);
+          const pctEl   = document.getElementById('pct-'   + r.id);
+          const barEl   = document.getElementById('bar-'   + r.id);
+          const countEl = document.getElementById('count-' + r.id);
+          if (pctEl)   pctEl.textContent   = p + '%';
+          if (barEl)   barEl.style.width   = p + '%';
+          if (countEl) countEl.textContent = votes[r.id];
+          if (barEl) {
+            if (chosen === r.id) barEl.classList.add('is-chosen');
+            else barEl.classList.remove('is-chosen');
+          }
+        });
+        const aiTotalEl = document.getElementById('aiTotal');
+        if (aiTotalEl) aiTotalEl.textContent = total;
+        currentVotes = votes;
+      }
+
+      /* ── AI verdict via Anthropic API ── */
+      async function fetchAISummary(votes) {
+        const total = Object.values(votes).reduce((a,b) => a + b, 0);
+        if (total === 0) return null;
+        const topR      = REACTIONS.reduce((a,b) => votes[b.id] > votes[a.id] ? b : a);
+        const breakdown = REACTIONS.map(r => {
+          const p = Math.round((votes[r.id] / total) * 100);
+          return r.label + ': ' + votes[r.id] + ' votes (' + p + '%)';
+        }).join(', ');
+        const prompt =
+          'You are writing a short, sharp one-sentence live visitor verdict for a software engineer portfolio.\n\n' +
+          'Voting data (' + total + ' total votes):\n' + breakdown + '\n\n' +
+          'Top reaction: "' + topR.label + '" (' + topR.emoji + ')\n\n' +
+          'Write exactly ONE punchy sentence (max 18 words) summarising what visitors think. ' +
+          'Be specific to the data. Sound like a real human verdict, not corporate. ' +
+          'No quotes, no emojis, no filler words like "clearly" or "truly".\n' +
+          'Examples: "Most visitors want to hire you yesterday." / "The design is the first thing everyone notices."';
+        const res  = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 60,
+                                 messages: [{ role: 'user', content: prompt }] }),
+        });
+        const data = await res.json();
+        return data?.content?.[0]?.text?.trim() || null;
+      }
+
+      async function updateAIVerdict(votes) {
+        const textEl = document.getElementById('aiText');
+        if (!textEl) return;
+        const total = Object.values(votes).reduce((a,b) => a + b, 0);
+        if (total === 0) {
+          textEl.className = 'ai-verdict-text';
+          textEl.textContent = 'Be the first to vote \u2014 the verdict updates live.';
+          return;
+        }
+        textEl.className = 'ai-verdict-text loading';
+        textEl.textContent = 'Analysing votes\u2026';
+        try {
+          const summary = await fetchAISummary(votes);
+          if (summary) { textEl.className = 'ai-verdict-text'; textEl.textContent = '\u201C' + summary + '\u201D'; }
+        } catch(_) {
+          textEl.className = 'ai-verdict-text';
+          textEl.textContent = 'Visitors are loving what they see.';
+        }
+      }
+
+      /* ── show voted confirmation ── */
+      function showVotedState(reactionId) {
+        const r = REACTIONS.find(x => x.id === reactionId);
+        if (!r) return;
+        const btns    = document.getElementById('reactionButtons');
+        const confirm = document.getElementById('votedConfirm');
+        if (btns)    btns.style.display    = 'none';
+        if (confirm) confirm.style.display = 'flex';
+        const emojiEl = document.getElementById('votedEmoji');
+        const labelEl = document.getElementById('votedLabel');
+        if (emojiEl) { emojiEl.textContent = r.emoji; emojiEl.style.animation = 'none'; setTimeout(() => { emojiEl.style.animation = 'popEmoji 0.55s cubic-bezier(0.34,1.56,0.64,1) both'; }, 10); }
+        if (labelEl) labelEl.textContent = r.label;
+      }
+
+      /* ── cast vote (global) ── */
+      window.castVote = async function(reactionId) {
+        if (hasVoted) return;
+        hasVoted = true; chosenId = reactionId;
+        document.querySelectorAll('.reaction-btn').forEach(b => b.disabled = true);
+        // Optimistic update
+        const opt = Object.assign({}, currentVotes);
+        opt[reactionId] = (opt[reactionId] || 0) + 1;
+        renderVotes(opt, reactionId);
+        showVotedState(reactionId);
+        try { localStorage.setItem('portfolio_voted_v2', JSON.stringify({ voted: true, reactionId })); } catch(_) {}
+        // POST to API
+        try {
+          const res  = await fetch('/api/votes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ reactionId }) });
+          const data = await res.json();
+          if (data.success && data.votes) renderVotes(data.votes, reactionId);
+        } catch(_) {}
+        updateAIVerdict(currentVotes);
+      };
+
+      /* ── init ── */
+      async function init() {
+        checkVoted();
+        if (hasVoted) showVotedState(chosenId);
+        try {
+          const res  = await fetch('/api/votes');
+          const data = await res.json();
+          if (data.success && data.votes) { renderVotes(data.votes, chosenId); updateAIVerdict(data.votes); }
+        } catch(_) {}
+      }
+
+      document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', init)
+        : init();
+    })();
+    </script>
+
+  </body>
+</html>
