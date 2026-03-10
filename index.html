@@ -13,13 +13,16 @@
     <meta property="og:url" content="https://mutiullahi-uthman-portfolio.vercel.app/" />
     <meta property="og:title" content="Mutiullahi Uthman - Portfolio website" />
     <meta property="og:description" content="Mutiullahi Uthman - Portfolio website" />
-    <meta property="og:image" content="https://mutiullahi-uthman-portfolio.vercel.app/assets/og-meta-image.png" />
+        <meta property="og:image" content="https://mutiullahi-uthman-portfolio.vercel.app/assets/og-meta-image.jpg" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type"   content="image/jpeg" />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://x.com/Dakul_tech" />
     <meta property="twitter:title" content="Mutiullahi Uthman Portfolio" />
     <meta property="twitter:description" content="Mutiullahi Uthman - Portfolio website" />
-    <meta property="twitter:image" content="https://mutiullahi-uthman-portfolio.vercel.app/assets/og-meta-image.png" />
+    <meta property="twitter:image" content="https://mutiullahi-uthman-portfolio.vercel.app/assets/og-meta-image.jpg" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
@@ -2076,7 +2079,7 @@
           </a>
         </div>
 
-        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!"
+        <a href="https://wa.me/=2348136055016?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!"
            target="_blank" rel="noopener noreferrer" rel="noopener noreferrer" class="modal-cta">
           <i class="fab fa-whatsapp"></i> Connect on WhatsApp
         </a>
@@ -2156,8 +2159,10 @@
             <span class="hero-stack-tag">UI/UX</span>
             <span class="hero-stack-tag">Brand</span>
           </div>
+
+
         </div>
-        <a href="https://wa.me/+2348136055016?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!" class="hero-cta" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!" class="hero-cta" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-whatsapp"></i> Connect With Me
         </a>
       </div>
@@ -2230,7 +2235,7 @@
                 <div class="about-stat-label">Projects Built</div>
               </div>
               <div class="about-stat">
-                <div class="about-stat-num">5<sup>+</sup></div>
+                <div class="about-stat-num">6<sup>+</sup></div>
                 <div class="about-stat-label">Years Coding</div>
               </div>
               <div class="about-stat">
@@ -2396,7 +2401,7 @@
                target="_blank" rel="noopener noreferrer" rel="noopener" class="connect-option whatsapp">
               <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
-            <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="connect-option gmail">
+            <a href="/cdn-cgi/l/email-protection#d6a3a2bebbb7b8bba3a2bfa3babab7bebfb7b2b3b2b9bda3b896b1bbb7bfbaf8b5b9bb" class="connect-option gmail">
               <i class="fas fa-envelope"></i> Gmail
             </a>
             <a href="https://www.linkedin.com/in/mutiullahi-adedokun-uthman-915224319/"
@@ -2419,8 +2424,8 @@
         </p>
 
         <div class="footer-contact">
-          <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="footer-email">
-            uthmanmutiullahiadedokun@gmail.com
+          <a href="/cdn-cgi/l/email-protection#3742435f5a56595a42435e425b5b565f5e56535253585c425977505a565e5b1954585a" class="footer-email">
+            <span class="__cf_email__" data-cfemail="dca9a8b4b1bdb2b1a9a8b5a9b0b0bdb4b5bdb8b9b8b3b7a9b29cbbb1bdb5b0f2bfb3b1">[email&#160;protected]</span>
           </a>
 
           <div class="footer-social">
@@ -2457,7 +2462,7 @@
 
 
     <!-- ── Scripts ───────────────────────────────────────────────── -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
       // Year
       document.getElementById('datee').textContent = new Date().getFullYear();
 
@@ -2584,14 +2589,11 @@
           const rect = hero.getBoundingClientRect();
           const cx = (e.clientX - rect.left) / rect.width  - 0.5;
           const cy = (e.clientY - rect.top)  / rect.height - 0.5;
-          headline.style.transform = `translate(${cx * 8}px, ${cy * 5}px)`;
+          headline.style.transform = `translate(${cx * 10}px, ${cy * 10}px)`;
         });
         hero.addEventListener('mouseleave', () => {
-          headline.style.transform = '';
-          headline.style.transition = 'transform 0.8s ease';
-          setTimeout(() => headline.style.transition = '', 800);
+          headline.style.transform = `translate(0, 0)`;
         });
+
       })();
     </script>
-  </body>
-</html>

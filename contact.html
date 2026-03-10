@@ -6,21 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Contact — Mutiullahi Uthman</title>
-    <meta name="title" content="Contact — Mutiullahi Uthman" />
+    <meta name="title"       content="Contact — Mutiullahi Uthman" />
     <meta name="description" content="Get in touch with Mutiullahi Uthman — Fullstack Software Engineer available worldwide." />
-    <meta name="author" content="Mutiullahi Uthman" />
+    <meta name="author"      content="Mutiullahi Uthman" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mutiullahi-uthman-portfolio.vercel.app/contact.html" />
-    <meta property="og:title" content="Contact — Mutiullahi Uthman" />
-    <meta property="og:description" content="Get in touch with Mutiullahi Uthman — Fullstack Software Engineer." />
-    <meta property="og:image" content="https://mutiullahi-uthman-portfolio.vercel.app/assets/og-meta-image.png" />
+    <meta property="og:type"         content="website" />
+    <meta property="og:url"          content="https://mutiullahi-uthman-portfolio.vercel.app/contact.html" />
+    <meta property="og:title"        content="Contact — Mutiullahi Uthman" />
+    <meta property="og:description"  content="Get in touch with Mutiullahi Uthman — Fullstack Software Engineer." />
+    <meta property="og:image"        content="https://mutiullahi-uthman-portfolio.vercel.app/assets/og-meta-image.jpg" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type"   content="image/jpeg" />
 
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://x.com/Dakul_tech" />
-    <meta property="twitter:title" content="Contact — Mutiullahi Uthman" />
+    <meta property="twitter:card"        content="summary_large_image" />
+    <meta property="twitter:url"         content="https://x.com/Dakul_tech" />
+    <meta property="twitter:title"       content="Contact — Mutiullahi Uthman" />
     <meta property="twitter:description" content="Get in touch with Mutiullahi Uthman — Fullstack Software Engineer." />
-    <meta property="twitter:image" content="https://mutiullahi-uthman-portfolio.vercel.app/assets/og-meta-image.png" />
+    <meta property="twitter:image"       content="https://mutiullahi-uthman-portfolio.vercel.app/assets/og-meta-image.jpg" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
@@ -94,14 +97,20 @@
       }
       .nav-avatar-btn:hover { border-color: var(--ink); }
       .nav-avatar-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
       .nav-avatar-btn img {
         width: 100%; height: 100%;
-        border-radius: 50%; object-fit: cover;
-        object-position: center 15%; display: block;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 15%;
+        display: block;
       }
+
+      /* Green online dot */
       .nav-avatar-btn::after {
         content: '';
-        position: absolute; bottom: 1px; right: 1px;
+        position: absolute;
+        bottom: 1px; right: 1px;
         width: 9px; height: 9px;
         background: var(--green);
         border: 2px solid var(--cream);
@@ -142,10 +151,13 @@
         opacity: 0.5;
       }
       .modal-avatar {
-        position: absolute; bottom: -22px; left: 20px;
+        position: absolute;
+        bottom: -22px; left: 20px;
         width: 52px; height: 52px; border-radius: 50%;
-        border: 3px solid var(--white); object-fit: cover;
-        object-position: center 15%; background: var(--border);
+        border: 3px solid var(--white);
+        object-fit: cover;
+        object-position: center 15%;
+        background: var(--border);
       }
       .modal-body { padding: 30px 20px 20px; }
       .modal-name { font-family: var(--font-body); font-size: 1rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 2px; }
@@ -222,8 +234,6 @@
         gap: 3rem;
       }
 
-      .contact-info-top {}
-
       .contact-availability {
         display: inline-flex;
         align-items: center;
@@ -260,17 +270,15 @@
       }
 
       /* Direct contact items */
-      .contact-items {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-      }
+      .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
 
       .contact-item {
         display: flex;
         align-items: center;
         gap: 1rem;
+        transition: opacity 0.2s;
       }
+      .contact-item:hover { opacity: 0.8; }
 
       .contact-item-icon {
         width: 40px; height: 40px;
@@ -282,46 +290,15 @@
         flex-shrink: 0;
         transition: border-color 0.2s, color 0.2s, background 0.2s;
       }
+      .contact-item:hover .contact-item-icon { border-color: var(--ink); color: var(--ink); background: var(--white); }
 
-      .contact-item:hover .contact-item-icon {
-        border-color: var(--ink);
-        color: var(--ink);
-        background: var(--white);
-      }
-
-      .contact-item-label {
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 2px;
-      }
-
-      .contact-item-value {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--ink);
-        transition: color 0.2s;
-      }
+      .contact-item-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px; }
+      .contact-item-value { font-size: 0.85rem; font-weight: 600; color: var(--ink); transition: color 0.2s; word-break: break-all; }
       .contact-item:hover .contact-item-value { color: var(--ink-dim); }
 
       /* Social row */
-      .contact-socials {
-        display: flex;
-        gap: 0.6rem;
-        flex-wrap: wrap;
-      }
-
-      .contact-social-link {
-        width: 36px; height: 36px;
-        border: 1px solid var(--border);
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        color: var(--ink-dim);
-        font-size: 0.8rem;
-        transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.18s;
-      }
+      .contact-socials { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+      .contact-social-link { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink-dim); font-size: 0.8rem; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.18s; }
       .contact-social-link:hover { transform: translateY(-2px); color: #fff; }
       .contact-social-link.li:hover { background: #0A66C2; border-color: #0A66C2; }
       .contact-social-link.gh:hover { background: #24292e; border-color: #24292e; }
@@ -335,47 +312,14 @@
         background: var(--white);
       }
 
-      .form-eyebrow {
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 0.6rem;
-      }
-
-      .form-title {
-        font-family: var(--font-display);
-        font-size: clamp(1.6rem, 2.5vw, 2.4rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        margin-bottom: 2.5rem;
-        line-height: 1.1;
-      }
+      .form-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+      .form-title { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2.5rem; line-height: 1.1; }
 
       /* Form fields */
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 1rem;
-      }
+      .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+      .form-field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
 
-      .form-field {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-        margin-bottom: 1rem;
-      }
-      .form-field.full { grid-column: 1 / -1; }
-
-      .form-label {
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--ink-dim);
-      }
+      .form-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); }
 
       .form-input,
       .form-textarea {
@@ -389,78 +333,44 @@
         color: var(--ink);
         outline: none;
         transition: border-color 0.2s, background 0.2s;
-        -webkit-appearance: none;
-        appearance: none;
+        -webkit-appearance: none; appearance: none;
       }
       .form-input::placeholder,
-      .form-textarea::placeholder { color: rgba(85, 85, 80, 0.4); }
+      .form-textarea::placeholder { color: rgba(85,85,80,0.4); }
       .form-input:focus,
-      .form-textarea:focus {
-        border-color: var(--ink);
-        background: var(--white);
-      }
+      .form-textarea:focus { border-color: var(--ink); background: var(--white); }
       .form-input.error { border-color: #e05a5a; }
-
       .form-textarea { resize: vertical; min-height: 140px; line-height: 1.6; }
 
       /* Subject chips */
-      .subject-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-
+      .subject-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
       .subject-chip {
         padding: 0.4rem 0.9rem;
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--ink-dim);
-        cursor: pointer;
+        border: 1px solid var(--border); border-radius: 20px;
+        font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+        color: var(--ink-dim); cursor: pointer;
         transition: border-color 0.2s, color 0.2s, background 0.2s;
-        background: transparent;
-        font-family: var(--font-body);
+        background: transparent; font-family: var(--font-body);
       }
       .subject-chip:hover,
-      .subject-chip.selected {
-        background: var(--ink);
-        color: var(--cream);
-        border-color: var(--ink);
-      }
+      .subject-chip.selected { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 
       /* Submit button */
       .form-submit {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.6rem;
-        background: var(--ink);
-        color: var(--cream);
+        display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+        width: 100%; margin-top: 0.5rem;
         padding: 0.9rem 2.2rem;
-        font-family: var(--font-body);
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        border: none;
-        border-radius: 2px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
+        background: var(--ink); color: var(--cream);
+        font-family: var(--font-body); font-size: 0.82rem; font-weight: 700;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        border: none; border-radius: 2px; cursor: pointer;
+        position: relative; overflow: hidden;
         transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s;
-        width: 100%;
-        justify-content: center;
-        margin-top: 0.5rem;
       }
       .form-submit::before {
-        content: '';
-        position: absolute; inset: 0;
+        content: ''; position: absolute; inset: 0;
         background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
-        transform: translateX(-100%);
-        transition: transform 0.5s ease;
+        transform: translateX(-100%); transition: transform 0.5s ease;
       }
       .form-submit:hover::before { transform: translateX(100%); }
       .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(17,17,17,0.2); }
@@ -470,56 +380,77 @@
       .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
 
       /* Success state */
-      .form-success {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 1rem;
-        padding: 3rem 2rem;
-        background: var(--cream);
-        border: 1px solid var(--border);
-        border-radius: 4px;
-      }
+      .form-success { display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1rem; padding: 3rem 2rem; background: var(--cream); border: 1px solid var(--border); border-radius: 4px; }
       .form-success.show { display: flex; }
-      .form-success-icon {
-        width: 56px; height: 56px;
-        background: rgba(62,201,122,0.1);
-        border: 1px solid rgba(62,201,122,0.3);
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.4rem;
-        color: var(--green);
-      }
-      .form-success h4 {
-        font-family: var(--font-display);
-        font-size: 1.5rem; font-weight: 700;
-      }
+      .form-success-icon { width: 56px; height: 56px; background: rgba(62,201,122,0.1); border: 1px solid rgba(62,201,122,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--green); }
+      .form-success h4 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
       .form-success p { font-size: 0.85rem; color: var(--ink-dim); }
 
-      /* Validation error msg */
-      .field-error {
-        font-size: 0.68rem;
-        color: #e05a5a;
-        letter-spacing: 0.04em;
-        margin-top: 2px;
-        display: none;
-      }
+      /* Validation errors */
+      .field-error { font-size: 0.68rem; color: #e05a5a; letter-spacing: 0.04em; margin-top: 2px; display: none; }
       .field-error.show { display: block; }
 
-      /* ─── Footer ────────────────────────────────────────────────── */
-      footer {
-        border-top: 1px solid var(--border);
-        padding: 4rem clamp(1.5rem, 5vw, 4rem) 2.5rem;
+      /* ─── Connect / Newsletter ──────────────────────────────────── */
+      #connect {
+        position: relative; background: var(--ink); overflow: hidden;
+        padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
       }
+      #connect::before {
+        content: ''; position: absolute; inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none; opacity: 0.4;
+      }
+      #connect::after {
+        content: '✦'; position: absolute;
+        right: clamp(2rem,8vw,6rem); top: 50%; transform: translateY(-50%);
+        font-size: clamp(12rem,28vw,22rem); line-height: 1;
+        color: rgba(255,255,255,0.03); pointer-events: none; user-select: none;
+      }
+      .connect-inner {
+        position: relative; z-index: 1;
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: clamp(3rem,6vw,6rem); align-items: center;
+      }
+      .connect-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.4rem; }
+      .connect-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent); }
+      .connect-headline { font-family: var(--font-display); font-size: clamp(2.6rem,5.5vw,5rem); font-weight: 700; line-height: 0.97; letter-spacing: -0.025em; color: var(--cream); margin-bottom: 1.6rem; }
+      .connect-headline em { font-style: italic; font-weight: 400; color: var(--accent); }
+      .connect-desc { font-size: 0.88rem; color: rgba(242,237,228,0.55); line-height: 1.75; max-width: 380px; }
+      .connect-right { display: flex; flex-direction: column; gap: 1.6rem; }
+      .connect-form-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,228,0.45); margin-bottom: 0.6rem; display: block; }
+      .newsletter-row { display: flex; gap: 0; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; overflow: hidden; background: rgba(255,255,255,0.04); transition: border-color 0.2s; }
+      .newsletter-row:focus-within { border-color: var(--accent); background: rgba(255,255,255,0.07); }
+      .newsletter-input { flex: 1; padding: 0.95rem 1.2rem; background: transparent; border: none; outline: none; font-family: var(--font-body); font-size: 0.85rem; color: var(--cream); min-width: 0; }
+      .newsletter-input::placeholder { color: rgba(242,237,228,0.3); }
+      .newsletter-btn { padding: 0.95rem 1.4rem; background: var(--accent); border: none; cursor: pointer; font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); white-space: nowrap; display: flex; align-items: center; gap: 0.4rem; position: relative; overflow: hidden; transition: background 0.2s, transform 0.15s; }
+      .newsletter-btn::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.2); transform: translateX(-100%); transition: transform 0.4s ease; }
+      .newsletter-btn:hover::before { transform: translateX(100%); }
+      .newsletter-btn:hover { background: #d9cbb0; }
+      .newsletter-btn:active { transform: scale(0.97); }
+      .newsletter-btn i { font-size: 0.7rem; transition: transform 0.2s; }
+      .newsletter-btn:hover i { transform: translateX(3px); }
+      .connect-or { display: flex; align-items: center; gap: 1rem; color: rgba(242,237,228,0.2); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+      .connect-or::before, .connect-or::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+      .connect-options { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+      .connect-option { flex: 1; min-width: 120px; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(242,237,228,0.65); text-decoration: none; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s; }
+      .connect-option:hover { border-color: rgba(255,255,255,0.3); color: var(--cream); background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+      .connect-option i { font-size: 0.85rem; }
+      .connect-option.whatsapp:hover { border-color: #25D366; color: #25D366; }
+      .connect-option.gmail:hover    { border-color: #EA4335; color: #EA4335; }
+      .connect-option.linkedin:hover { border-color: #0A66C2; color: #0A66C2; }
+      .newsletter-success { display: none; align-items: center; gap: 0.6rem; font-size: 0.8rem; color: #3EC97A; font-weight: 600; letter-spacing: 0.04em; padding: 0.8rem 1rem; border: 1px solid rgba(62,201,122,0.25); border-radius: 4px; background: rgba(62,201,122,0.06); }
+      .newsletter-success.show { display: flex; }
+      .newsletter-success i { font-size: 1rem; }
+
+      /* ─── Footer ────────────────────────────────────────────────── */
+      footer { border-top: 1px solid var(--border); padding: 4rem clamp(1.5rem, 5vw, 4rem) 2.5rem; }
       .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; flex-wrap: wrap; margin-bottom: 4rem; }
       .footer-cta-text { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; max-width: 520px; }
       .footer-cta-text em { font-style: italic; font-weight: 400; color: var(--ink-dim); }
       .footer-contact { display: flex; flex-direction: column; gap: 1.2rem; align-items: flex-end; }
       .footer-email { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em; border-bottom: 1px solid var(--ink); padding-bottom: 2px; transition: color 0.2s; }
       .footer-email:hover { color: var(--ink-dim); }
-      .footer-social { display: flex; gap: 1rem; align-items: center; }
+      .footer-social { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
       .footer-social a { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink-dim); font-size: 0.8rem; transition: border-color 0.2s, color 0.2s, background 0.2s; }
       .footer-social a:hover { border-color: var(--ink); color: var(--ink); background: var(--white); }
       .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 1.5rem; }
@@ -534,12 +465,30 @@
         .hamburger { display: flex; }
         .contact-wrapper { grid-template-columns: 1fr; }
         .contact-info { border-right: none; border-bottom: 1px solid var(--border); }
+        .connect-inner { grid-template-columns: 1fr; }
+        #connect::after { display: none; }
         .footer-contact { align-items: flex-start; }
         .footer-bottom { flex-direction: column; align-items: flex-start; }
+        .profile-modal { left: 1rem; right: 1rem; width: auto; }
       }
-
+      @media (max-width: 640px) {
+        .newsletter-row { flex-direction: column; }
+        .newsletter-btn { width: 100%; justify-content: center; }
+        .connect-options { flex-direction: column; }
+      }
       @media (max-width: 480px) {
+        :root { --nav-h: 60px; }
+        .navbar { padding: 0 1.2rem; }
+        .page-hero, .contact-info, .contact-form-panel { padding-left: 1.2rem; padding-right: 1.2rem; }
         .form-row { grid-template-columns: 1fr; }
+        #connect { padding: 3.5rem 1.2rem; }
+        footer { padding: 3rem 1.2rem 2rem; }
+        .subject-chips { gap: 0.4rem; }
+        .subject-chip { font-size: 0.65rem; padding: 0.35rem 0.7rem; }
+      }
+      @media (max-width: 380px) {
+        .connect-option { font-size: 0.7rem; padding: 0.7rem 0.8rem; }
+        .modal-skill-tag { font-size: 0.6rem; padding: 2px 6px; }
       }
 
       /* ─── Page enter animation ──────────────────────────────────── */
@@ -596,7 +545,8 @@
           <a href="https://x.com/Dakul_tech" target="_blank" rel="noopener noreferrer" class="modal-social-link tw" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
           <a href="https://web.facebook.com/Dacooldalyricist" target="_blank" rel="noopener noreferrer" class="modal-social-link fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         </div>
-        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!" target="_blank" rel="noopener noreferrer" class="modal-cta">
+        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!"
+           target="_blank" rel="noopener noreferrer" class="modal-cta">
           <i class="fab fa-whatsapp"></i> Connect on WhatsApp
         </a>
       </div>
@@ -604,7 +554,8 @@
 
     <!-- ── Navbar ───────────────────────────────────────────────── -->
     <nav class="navbar">
-      <button class="nav-avatar-btn" id="avatarBtn" onclick="toggleProfileModal()" aria-label="Open profile card" aria-expanded="false">
+      <button class="nav-avatar-btn" id="avatarBtn" onclick="toggleProfileModal()"
+              aria-label="Open profile card" aria-expanded="false">
         <img src="assets/profile-image.png" alt="Mutiullahi Uthman" />
       </button>
 
@@ -656,13 +607,15 @@
               <em>worth building?</em>
             </h2>
             <p class="contact-bio">
-              Whether you have a product idea, need a reliable engineer for your team, 
+              Whether you have a product idea, need a reliable engineer for your team,
               or want to talk design — my inbox is open. I typically respond within 24 hours.
             </p>
           </div>
 
-          <!-- Direct contact -->
+          <!-- Direct contact items -->
           <div class="contact-items">
+
+            <!-- ✅ FIXED: plain mailto, no Cloudflare obfuscation -->
             <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="contact-item">
               <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
               <div>
@@ -671,7 +624,8 @@
               </div>
             </a>
 
-            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi!" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi%20Mutiullahi!"
+               target="_blank" rel="noopener noreferrer" class="contact-item">
               <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
               <div>
                 <p class="contact-item-label">WhatsApp</p>
@@ -686,9 +640,10 @@
                 <p class="contact-item-value">Available Worldwide</p>
               </div>
             </div>
+
           </div>
 
-          <!-- Socials -->
+          <!-- Social links -->
           <div class="contact-socials">
             <a href="https://www.linkedin.com/in/mutiullahi-adedokun-uthman-915224319/" target="_blank" rel="noopener noreferrer" class="contact-social-link li" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://github.com/DakulTech" target="_blank" rel="noopener noreferrer" class="contact-social-link gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -703,7 +658,7 @@
           <p class="form-eyebrow">Send a message</p>
           <h2 class="form-title">Fill out the form<br />and I'll get back to you.</h2>
 
-          <!-- What are you reaching out about? -->
+          <!-- Subject chips -->
           <div class="subject-chips" id="subjectChips">
             <button type="button" class="subject-chip selected" data-value="Project Inquiry">Project Inquiry</button>
             <button type="button" class="subject-chip" data-value="Freelance Work">Freelance Work</button>
@@ -741,7 +696,9 @@
 
             <div class="form-field">
               <label class="form-label" for="contact-message">Message *</label>
-              <textarea id="contact-message" class="form-textarea" placeholder="Tell me about your project, timeline, budget — anything useful..." required></textarea>
+              <textarea id="contact-message" class="form-textarea"
+                        placeholder="Tell me about your project, timeline, budget — anything useful..."
+                        required></textarea>
               <span class="field-error" id="err-message">Please write a message.</span>
             </div>
 
@@ -754,6 +711,60 @@
       </div>
     </main>
 
+    <!-- ── Connect / Newsletter ─────────────────────────────────── -->
+    <section id="connect">
+      <div class="connect-inner">
+        <div class="connect-left">
+          <p class="connect-eyebrow">Let's work together</p>
+          <h2 class="connect-headline">
+            Got a project<br />
+            in mind? <em>Let's<br />
+            make it real.</em>
+          </h2>
+          <p class="connect-desc">
+            Whether it's a product you're building, a brand you're shaping,
+            or a backend you need to scale — I'm open to new opportunities,
+            collaborations, and ideas worth exploring.
+          </p>
+        </div>
+
+        <div class="connect-right">
+          <div>
+            <label class="connect-form-label" for="newsletter-email">
+              Stay in the loop — get articles &amp; updates
+            </label>
+            <div class="newsletter-row" id="newsletterRow">
+              <input type="email" id="newsletter-email" class="newsletter-input"
+                     placeholder="your@email.com" autocomplete="email" />
+              <button class="newsletter-btn" onclick="handleSubscribe()">
+                Subscribe <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+            <div class="newsletter-success" id="newsletterSuccess">
+              <i class="fas fa-circle-check"></i> You're in! I'll be in touch soon.
+            </div>
+          </div>
+
+          <div class="connect-or">or reach out directly</div>
+
+          <div class="connect-options">
+            <a href="https://wa.me/+2348136055016?text=Hi%20Mutiullahi%2C%20I%27d%20love%20to%20connect!"
+               target="_blank" rel="noopener noreferrer" class="connect-option whatsapp">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <!-- ✅ FIXED: plain mailto -->
+            <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="connect-option gmail">
+              <i class="fas fa-envelope"></i> Gmail
+            </a>
+            <a href="https://www.linkedin.com/in/mutiullahi-adedokun-uthman-915224319/"
+               target="_blank" rel="noopener noreferrer" class="connect-option linkedin">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── Footer ───────────────────────────────────────────────── -->
     <footer id="footer">
       <div class="footer-top">
@@ -763,6 +774,7 @@
           great ideas &amp; fun teams.
         </p>
         <div class="footer-contact">
+          <!-- ✅ FIXED: plain mailto, real email text — no Cloudflare span -->
           <a href="mailto:uthmanmutiullahiadedokun@gmail.com" class="footer-email">
             uthmanmutiullahiadedokun@gmail.com
           </a>
@@ -775,8 +787,9 @@
           </div>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; DakulTech <span id="datee"></span> — All rights reserved all wrongs reversed.</p>
+        <p class="footer-copy">&copy; DakulTech <span id="datee"></span> — All rights reserved. All wrongs reversed too.</p>
         <ul class="footer-bottom-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="projects.html">Projects</a></li>
@@ -785,7 +798,7 @@
       </div>
     </footer>
 
-    <!-- ── Scripts ───────────────────────────────────────────────── -->
+    <!-- ── Scripts ── (Cloudflare email-decode script removed) ──── -->
     <script>
       document.getElementById('datee').textContent = new Date().getFullYear();
 
@@ -799,8 +812,9 @@
         const backdrop = document.getElementById('profileBackdrop');
         const btn      = document.getElementById('avatarBtn');
         const isOpen   = modal.classList.contains('open');
-        if (isOpen) { closeProfileModal(); }
-        else {
+        if (isOpen) {
+          closeProfileModal();
+        } else {
           modal.classList.add('open');
           backdrop.classList.add('open');
           btn.setAttribute('aria-expanded', 'true');
@@ -820,7 +834,6 @@
           document.querySelectorAll('.subject-chip').forEach(c => c.classList.remove('selected'));
           chip.classList.add('selected');
           selectedSubject = chip.dataset.value;
-          // Mirror into subject field
           const subjectField = document.getElementById('contact-subject');
           if (subjectField) subjectField.value = selectedSubject;
         });
@@ -837,7 +850,7 @@
         const btn     = document.getElementById('submitBtn');
 
         // Reset errors
-        ['err-name','err-email','err-message'].forEach(id => {
+        ['err-name', 'err-email', 'err-message'].forEach(id => {
           document.getElementById(id).classList.remove('show');
         });
         [name, email, message].forEach(f => f.classList.remove('error'));
@@ -859,15 +872,37 @@
           message.classList.add('error');
           valid = false;
         }
-
         if (!valid) return;
 
-        // Simulate send
+        // ⚠️ Hook your email API here (EmailJS / Formspree / etc.)
         btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+        btn.innerHTML = 'Sending… <i class="fas fa-spinner fa-spin"></i>';
 
         setTimeout(() => {
-          this.style.display = 'none';
           document.getElementById('formSuccess').classList.add('show');
+          this.style.display = 'none';
+          btn.disabled = false;
+          btn.innerHTML = 'Send Message <i class="fas fa-arrow-right"></i>';
         }, 1500);
       });
+
+      // ── Newsletter ──
+      function handleSubscribe() {
+        const input   = document.getElementById('newsletter-email');
+        const row     = document.getElementById('newsletterRow');
+        const success = document.getElementById('newsletterSuccess');
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+        if (!emailOk) {
+          row.style.borderColor = '#e05a5a';
+          input.focus();
+          setTimeout(() => { row.style.borderColor = ''; }, 1500);
+          return;
+        }
+        // ⚠️ Hook your newsletter API here (Mailchimp / ConvertKit / etc.)
+        row.style.display = 'none';
+        success.classList.add('show');
+      }
+    </script>
+
+  </body>
+</html>
