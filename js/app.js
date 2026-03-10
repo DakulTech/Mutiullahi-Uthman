@@ -68,6 +68,8 @@
     var loader = $('page-loader');
     if (!loader) return;
     loader.classList.add('loader--exit');
+    // Dispatch event so hero split-text fires as curtain opens
+    window.dispatchEvent(new Event('loaderDone'));
     setTimeout(function () {
       loader.classList.add('loader--done');
       document.body.classList.remove('js-loading');
