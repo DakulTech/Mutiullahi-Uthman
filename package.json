@@ -2,7 +2,6 @@
   "name": "mutiullahi-uthman-portfolio",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "dependencies": {
     "nodemailer": "^6.9.13",
     "@neondatabase/serverless": "^0.9.0"
