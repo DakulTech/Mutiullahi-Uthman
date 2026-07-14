@@ -9,8 +9,8 @@ const ALL_PROJECTS = [
   {
     title:         "Know Your Tenant",
     tagline:       "Distributed backend for trusted rental verification and tenant onboarding.",
-    desc:          "A proptech platform that brings together landlords, agents, and tenants through a secure verification flow backed by a distributed Go backend, PostgreSQL persistence, Redis caching, and event-driven messaging for onboarding, rent reminders, and identity checks.",
-    stack:         ["Go", "PostgreSQL", "Redis", "NATS", "Docker", "Twilio"],
+    desc:          "A proptech platform that brings together landlords, agents, and tenants through a secure verification flow backed by a distributed Go backend, PostgreSQL for durable data storage, Redis for caching and session control, and event-driven messaging for onboarding, rent reminders, and identity checks.",
+    stack:         ["Go", "PostgreSQL", "Redis", "NATS", "Docker", "Twilio", "JWT", "REST API"],
     category:      "webapp",
     categoryLabel: "SaaS / PropTech",
     year:          "2025",
