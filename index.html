@@ -844,6 +844,15 @@
     <script src="js/script.js"></script>
     <script src="js/particles.min.js"></script>
     <script src="js/app.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('./sw.js').catch(function (error) {
+            console.warn('Service worker registration failed:', error);
+          });
+        });
+      }
+    </script>
 
     <script>
       (function() {

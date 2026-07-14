@@ -8,20 +8,20 @@
 const ALL_PROJECTS = [
   {
     title:         "Know Your Tenant",
-    tagline:       "Tenant verification network — know exactly who's moving in.",
-    desc:          "A trust-first platform giving landlords, agents, and tenants a single verified record: confirmed identity, encrypted documents, transparent rental history, and an audit trail that holds up to scrutiny.",
-    stack:         ["Next.js", "React", "Node.js", "PostgreSQL", "Vercel"],
+    tagline:       "Distributed backend for trusted rental verification and tenant onboarding.",
+    desc:          "A proptech platform that brings together landlords, agents, and tenants through a secure verification flow backed by a distributed Go backend, PostgreSQL persistence, Redis caching, and event-driven messaging for onboarding, rent reminders, and identity checks.",
+    stack:         ["Go", "PostgreSQL", "Redis", "NATS", "Docker", "Twilio"],
     category:      "webapp",
     categoryLabel: "SaaS / PropTech",
     year:          "2025",
-    github:        "https://github.com/DakulTech/kyt-frontend",
+    github:        "https://github.com/DakulTech/kyt-backend",
     live:          "https://know-your-tenant.vercel.app",
     image:         "assets/projects/kyt-og-image.png",
     featured:      true,
     caseStudy: {
-      problem:  "Landlords and property managers lose hours manually reviewing tenant documents that can easily be faked — forged pay slips, fabricated references, stolen identities. Nigeria's rental market has no centralised verification layer, so every landlord reinvents the wheel and every fraudulent tenant simply reapplies elsewhere. Honest renters suffer too: they build no portable credential that proves their track record to new landlords.",
-      solution: "Know Your Tenant (KYT) borrows the rigour of KYC from financial services and applies it to rentals. Tenants register once, verify their identity with encrypted records, and build a transparent rental history. Landlords and agents get a single trusted profile they can check in minutes — not days. The platform enforces ID verification, generates a tamper-resistant audit trail, and gives each verified tenant a portable KYT-ID credential.",
-      outcome:  "Reduces fraudulent rental applications, compresses tenant screening from days to minutes, and gives honest renters a reusable verified credential. Landlords gain confidence; tenants gain leverage."
+      problem:  "The rental market lacked a reliable way to verify identities, protect landlords from fraud, and give genuine tenants a portable record of trust. Every onboarding flow was manual, fragmented, and difficult to scale across landlords, agents, and tenants.",
+      solution: "Know Your Tenant (KYT) uses a distributed backend written in Go with separate services for API handling, verification, notifications, and rent scheduling. PostgreSQL stores the core records, Redis accelerates sessions and idempotency, and NATS coordinates asynchronous events such as rent alerts and verification workflows. The system is designed for secure onboarding, auditability, and production-ready deployment.",
+      outcome:  "The platform creates a verifiable trust layer for rentals, reduces friction in tenant screening, and provides a strong foundation for future growth with queue-based processing, scaling-friendly services, and resilient background jobs."
     }
   },
   {

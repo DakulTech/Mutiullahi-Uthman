@@ -813,3 +813,10 @@
     <!-- ── Scripts ───────────────────────────────────────────────── -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
       document.getElementById('datee').textContent = new Date().getFullYear();
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('./sw.js').catch(function (error) {
+            console.warn('Service worker registration failed:', error);
+          });
+        });
+      }
